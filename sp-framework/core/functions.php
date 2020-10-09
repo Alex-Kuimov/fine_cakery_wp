@@ -202,9 +202,43 @@ function sp_get_breadcrumbs($result=null){
 
             if(is_product_category()){
 
+                $result .= ' • <a href="'.esc_url(get_the_permalink($shopPageID)).'">'.get_the_title($shopPageID).'</a>';
+
+                $queriedObject = get_queried_object();
+
+                if($queriedObject->parent != '0'){
+                    $termID = $queriedObject->parent;
+                    $term = get_term_by( 'id', $termID, 'product_cat');
+                    $result .= '• <a href="'.get_term_link($termID).'">'.$term->name.'</a>';
+                }
+
             }
 
             if($postType == 'product' && is_single()){
+
+                $result .= ' • <a href="'.esc_url(get_the_permalink($shopPageID)).'">'.get_the_title($shopPageID).'</a>';
+
+                $termList = wp_get_post_terms($postID, 'product_cat', array('fields'=>'all'));
+
+                if(!empty($termList)){
+                    foreach ($termList as $termItem) {
+                        $termID = $termItem->term_id;
+                        if($termItem->parent == '0'){
+                            $term = get_term_by( 'id', $termID, 'product_cat');
+                            $result .= ' • <a href="'.get_term_link($termID).'">'.$term->name.'</a>';
+                        }   
+                    }
+                }
+
+                if(!empty($termList)){
+                    foreach ($termList as $termItem) {
+                        $termID = $termItem->term_id;
+                        if($termItem->parent != '0'){
+                            $term = get_term_by( 'id', $termID, 'product_cat');
+                            $result .= ' • <a href="'.get_term_link($termID).'">'.$term->name.'</a>';
+                        }
+                    }
+                }
 
             }
 
