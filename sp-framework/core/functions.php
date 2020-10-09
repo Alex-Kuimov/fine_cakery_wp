@@ -225,8 +225,6 @@ function sp_get_gallery($postID=null, $result=null){
     $title = SP_Framework_Post_Type_Utility::get_meta($postID, 'post_images_title');
     $images = SP_Framework_Post_Type_Utility::get_meta($postID, 'img_post_images');
 
-    //print_r($images);
-
     if($images[0]!=''){
         $result .= '<div class="gallery container">';
 
@@ -600,8 +598,7 @@ function sp_get_posts($result=null){
 */
 
 
-function sp_get_catalog_items($args, $result=null){
-
+function sp_get_catalog_items($args, $tags, $result=null){
     $argsPosts = array('post_type' => 'product');
 
     if(isset($args['numberposts'])) $argsPosts['numberposts']   = $args['numberposts'];
@@ -674,13 +671,7 @@ function sp_get_catalog_items($args, $result=null){
 
                 $result .= '</div>';
                     
-                $result .= '<div class="catalog__tags">';
-                    $result .= '<span class="catalog__tag-item catalog__tag-item_green">Vegan</span>';
-                    $result .= '<span class="catalog__tag-item catalog__tag-item_main">Refined sugar free</span>';
-                    $result .= '<span class="catalog__tag-item catalog__tag-item_orange">Gluten free</span>';
-                    $result .= '<span class="catalog__tag-item catalog__tag-item_gray">Lactose free</span>';
-                    $result .= '<span class="catalog__tag-item catalog__tag-item_brown">Keto</span>';
-                $result .= '</div>';
+                $result .= sp_get_product_tags($productID, $tags);
 
                 $result .= '<p class="catalog__title">'.$title.'</p>';
                 $result .= '<span class="catalog__from">From</span>';
@@ -727,5 +718,49 @@ function sp_get_catalog_items($args, $result=null){
     }
 
     return $result;
+}
 
+
+function sp_get_product_tags($productID, $tags, $result=null){
+    
+    $colors = array();
+
+    foreach ($tags as $tag) {
+        $color = SP_Framework_Post_Type_Utility::get_meta($productID, $tag);
+        $colors[$tag] = $color;                  
+    }
+
+    $argsPosts = array(
+        'post_type'     =>  'sp_product_tags',
+        'order'         =>  'desc',
+    );
+     
+    $spPosts = SP_Framework_Post_Type_Utility::get_list($argsPosts);
+     
+    if(count($spPosts)>0){
+        
+        $result .= '<div class="catalog__tags">';
+        foreach ($spPosts as $spPost) {
+            $postID = $spPost['id'];
+
+            foreach ($colors as $key => $value) {
+                
+                $colorName1 = $key;
+                $colorName2 = 'checkbox_'.$postID; 
+
+                if($colorName1 == $colorName2){
+                    if($value == 'y'){
+                        $title = $spPost['title'];
+                        $color = SP_Framework_Post_Type_Utility::get_meta($postID, 'product_tags_color');
+                        $result .= '<span class="catalog__tag-item" style="background: '.$color.'">'.$title.'</span>';
+                    }    
+                }    
+            }            
+
+        }
+        $result .= '</div>';
+
+    }        
+
+    return $result;
 }

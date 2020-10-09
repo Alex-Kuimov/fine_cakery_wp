@@ -59,13 +59,8 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
 
     <div class="product-wrap product-text-wrap">
         <h1 class="product__title"><?php echo $productTitle;?></h1>
-        <div class="catalog__tags">
-            <span class="catalog__tag-item catalog__tag-item_green">Vegan</span>
-            <span class="catalog__tag-item catalog__tag-item_main">Refined sugar free</span>
-            <span class="catalog__tag-item catalog__tag-item_orange">Gluten free</span>
-            <span class="catalog__tag-item catalog__tag-item_gray">Lactose free</span>
-            <span class="catalog__tag-item catalog__tag-item_brown">Keto</span>
-        </div>
+
+        <?php echo sp_get_product_tags($productID, $tagsArray);?>
 
         <p class="product__select-title">Choose the size:</p>
         <select class="product__select">
@@ -112,7 +107,7 @@ $args = array(
 	'orderby' 		=> $orderby
 );
 
-echo sp_get_catalog_items($args);
+echo sp_get_catalog_items($args, $tagsArray);
 
 
 get_footer();

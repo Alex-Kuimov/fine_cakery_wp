@@ -67,3 +67,59 @@ $args = array(
  	),
 );
 $spPostMeta->create($args);
+
+$spProductTagsMeta = new SP_Framework_Post_Type_Meta_Box();
+$args = array(
+	'post_type' => 'sp_product_tags',
+	'name'     	=> 'settings_sp_product_tags',
+	'label'		=> 'Settings',
+	'validate' => 'n',
+	'sanitize' => 'n',
+ 	'fields' => array(
+ 		'product_tags_color' =>  array(
+ 			'type' 	=> 'text',
+ 			'name' 	=> 'product_tags_color',
+ 			'label' => 'Color',
+ 			'caption' => '',
+ 			'required' => 'n',
+ 			'default' => '#8A6A4C', 
+ 		),
+ 	),
+);
+$spProductTagsMeta->create($args);
+
+
+$spProductMeta = new SP_Framework_Post_Type_Meta_Box();
+$tagsArray = array();
+$args = array(
+	'post_type' => 'product',
+	'name'     	=> 'settings_product_tags',
+	'label'		=> 'Product Tags',
+	'validate' => 'n',
+	'sanitize' => 'n',
+ 	'fields' => array(),
+);
+
+$argsPosts = array(
+	'post_type' 	=> 	'sp_product_tags',
+	'order'			=>	'desc',
+);
+ 
+$spPosts = SP_Framework_Post_Type_Utility::get_list($argsPosts);
+ 
+if(count($spPosts)>0){
+	$index = 0;
+	foreach ($spPosts as $spPost) {
+		$args['fields']['checkbox_'.$spPost['id'].''] = array(
+			'type' 	=> 'checkbox',
+			'name' 	=> 'checkbox_'.$spPost['id'].'',
+			'label' => $spPost['title'],
+			'caption' => '',
+			'required' => 'n',
+			'default' => '', 
+		);
+		$tagsArray[] = 'checkbox_'.$spPost['id'].'';
+	}
+}
+$spProductMeta->create($args);
+

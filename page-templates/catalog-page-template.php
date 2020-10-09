@@ -33,6 +33,6 @@ $args = array(
 	'orderby' 		=> $orderby
 );
 
-echo sp_get_catalog_items($args);
+echo sp_get_catalog_items($args, $tagsArray);
 
 get_footer();
