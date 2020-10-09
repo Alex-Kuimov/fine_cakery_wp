@@ -10,9 +10,6 @@ $productID      = get_the_ID();
 $productImage   = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
 $productText    = SP_Framework_Post_Type_Utility::get_content($productID);
 
-$regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
-$salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
-
 $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
 
 ?>
@@ -62,11 +59,7 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
 
         <?php echo sp_get_product_tags($productID, $tagsArray);?>
 
-        <p class="product__select-title">Choose the size:</p>
-        <select class="product__select">
-            <option>16cm - 8 points</option>
-            <option>20cm - 12 points</option>
-        </select>
+        <?php echo sp_get_variant_product($productID);?>
 
         <p class="product__select-title">Choose the flavour:</p>
         <select class="product__select">
@@ -75,11 +68,10 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
         </select>
 
         <div class="catalog__wrap">
-            <span class="catalog__currency">CHF</span>
-            <span class="catalog__price"><?php echo $regularPrice;?></span>
+            <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
+            <?php echo sp_get_product_price($productID);?>
+            <button class="button product__button">add to cart</button>
         </div>
-
-        <button class="button product__button">add to cart</button>
 
         <div class="product__description">
             <?php echo $productText;?>

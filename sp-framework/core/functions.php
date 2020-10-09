@@ -685,9 +685,6 @@ function sp_get_catalog_items($args, $tags, $result=null){
             $url = $spPost['url'];
             $title = $spPost['title']; 
 
-            $regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
-            $salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
-
             $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
             $firstImage = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
 
@@ -711,8 +708,8 @@ function sp_get_catalog_items($args, $tags, $result=null){
                 $result .= '<span class="catalog__from">From</span>';
 
                 $result .= '<div class="catalog__wrap">';
-                    $result .= '<span class="catalog__currency">CHF</span>';
-                    $result .= '<span class="catalog__price">'.$regularPrice.'</span>';
+                    $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'</span>';
+                    $result .= sp_get_product_price($productID);
                 $result .= '</div>';
 
                 $result .= '<p class="catalog__button button">order</p>';
@@ -753,7 +750,6 @@ function sp_get_catalog_items($args, $tags, $result=null){
 
     return $result;
 }
-
 
 function sp_get_product_tags($productID, $tags, $result=null){
     
@@ -797,4 +793,104 @@ function sp_get_product_tags($productID, $tags, $result=null){
     }        
 
     return $result;
+}
+
+
+function sp_get_variant_product($productID, $type=null, $result=null){
+    $product = wc_get_product($productID);
+    $childrenIDs = $product->get_children();
+
+    $variableP  = new WC_Product_Variable($productID);
+    $variations = $variableP->get_available_variations();
+
+    if($childrenIDs){
+
+        foreach ($product->get_variation_attributes() as $taxonomy => $termNames ) {
+            $attributeLabelName = wc_attribute_label($taxonomy);
+        }
+
+        $result .= '<p class="product__select-title">'.$attributeLabelName.':</p>';
+        $result .= '<select class="product__select">';
+
+        foreach ($variations as $variation) {
+            foreach ($childrenIDs as $childrenID) { 
+                if($variation['variation_id'] == $childrenID){
+                    $attributes     = $variation['attributes'];
+                    $availability   = sanitize_text_field($variation['availability_html']);
+
+                    $attr = '';
+                    $index = 0;
+                    foreach ($attributes as $attribute) {
+                        if($index == 0){
+                            $attr .= $attribute;
+                        } else{
+                            $attr .= ' - '.$attribute;
+                        }
+                        $index++;
+                    }   
+
+                    $result .= '<option value="'.$childrenID.'">'.$attr.'</option>';                                      
+                }
+            }
+        }
+
+        $result .= '</select>';
+
+    }
+
+    return $result;
+}    
+
+
+function sp_get_product_price($productID, $productPrice=null){
+    $regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
+    $salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
+
+    $regularPriceJS = SP_Framework_Woocommerce::get_product_price($productID);
+    $salePriceJS = SP_Framework_Woocommerce::get_product_sale_price($productID);
+
+    $product = wc_get_product($productID);
+    $childrenIDs = $product->get_children();
+    
+    if($regularPrice) $regularPrice = str_replace('.00', '', number_format($regularPrice, 2, '.', ' '));
+    if($salePrice) $salePrice = str_replace('.00', '', number_format($salePrice, 2, '.', ' '));
+
+    if(!$childrenIDs){
+
+        if($salePrice){
+
+        } else {
+            $productPrice = '<span class="catalog__price">'.$regularPrice.'</span>';
+        }       
+
+    } else {
+
+        if(isset($childrenIDs[0])) $variantID = $childrenIDs[0];
+
+        $variableP  = new WC_Product_Variable($productID);
+        $prices     = $variableP->get_variation_prices();
+
+        if(isset($prices['regular_price'][$variantID])){
+            $regularPrice   = $prices['regular_price'][$variantID];
+            $regularPriceJS = $prices['regular_price'][$variantID];
+        }
+
+        if(isset($prices['sale_price'][$variantID])){
+            $salePrice   = $prices['sale_price'][$variantID];
+            $salePriceJS = $prices['sale_price'][$variantID];
+        }
+
+        if($regularPrice) $regularPrice = str_replace('.00', '', number_format($regularPrice, 2, '.', ' '));
+        if($salePrice) $salePrice = str_replace('.00', '', number_format($salePrice, 2, '.', ' '));
+
+        if($regularPrice != $salePrice){
+
+        } else {
+            $productPrice = '<span class="catalog__price">'.$regularPrice.'</span>';
+        }
+    
+    }
+
+    return $productPrice;
+
 }
