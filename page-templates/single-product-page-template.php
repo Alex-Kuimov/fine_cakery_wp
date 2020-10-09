@@ -13,6 +13,8 @@ $productText    = SP_Framework_Post_Type_Utility::get_content($productID);
 $regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
 $salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
 
+$imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
+
 ?>
 
 
@@ -24,6 +26,13 @@ $salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
             <div class="swiper-wrapper">
             	<?php
             	echo '<img class="swiper-slide" src="'.$productImage.'" alt="image: '.$productTitle.'">';
+
+            	if(isset($imageGallery[0])){
+                	foreach ($imageGallery as $imageGalleryID) {
+                		$imageGallerySrc = wp_get_attachment_url($imageGalleryID);
+                		echo '<img class="swiper-slide" src="'.$imageGallerySrc.'" alt="image: '.$productTitle.'">';
+                	}                	
+                }
             	?>
             </div>
         </div>
@@ -32,6 +41,13 @@ $salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
             <div class="swiper-wrapper">
             	<?php
                 echo '<img class="swiper-slide" src="'.$productImage.'" alt="image: '.$productTitle.'">';
+
+                if(isset($imageGallery[0])){
+                	foreach ($imageGallery as $imageGalleryID) {
+                		$imageGallerySrc = wp_get_attachment_url($imageGalleryID);
+                		echo '<img class="swiper-slide" src="'.$imageGallerySrc.'" alt="image: '.$productTitle.'">';
+                	}                	
+                }
                 ?>
             </div>
 
