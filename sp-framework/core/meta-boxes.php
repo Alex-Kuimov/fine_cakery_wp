@@ -3,6 +3,10 @@
 * Meta boxes
 */
 
+/*
+* Slider meta
+*/
+
 $spSliderMeta = new SP_Framework_Post_Type_Meta_Box();
 $args = array(
 	'post_type' => 'sp_slider',
@@ -30,6 +34,11 @@ $args = array(
  	),
 );
 $spSliderMeta->create($args);
+
+
+/*
+* Post meta
+*/
 
 
 $spPostMeta = new SP_Framework_Post_Type_Meta_Box();
@@ -68,6 +77,12 @@ $args = array(
 );
 $spPostMeta->create($args);
 
+
+/*
+* Product tags meta
+*/
+
+
 $spProductTagsMeta = new SP_Framework_Post_Type_Meta_Box();
 $args = array(
 	'post_type' => 'sp_product_tags',
@@ -87,6 +102,11 @@ $args = array(
  	),
 );
 $spProductTagsMeta->create($args);
+
+
+/*
+* Product meta
+*/
 
 
 $spProductMeta = new SP_Framework_Post_Type_Meta_Box();
@@ -123,3 +143,30 @@ if(count($spPosts)>0){
 }
 $spProductMeta->create($args);
 
+$spProductMeta = new SP_Framework_Post_Type_Meta_Box();
+$args = array(
+	'post_type' => 'product',
+	'name'     	=> 'settings_additional_product',
+	'label'		=> 'Additional properties',
+	'validate' => 'n',
+	'sanitize' => 'n',
+ 	'fields' => array(
+ 		'product_property_title' =>  array(
+ 			'type' 	=> 'text',
+ 			'name' 	=> 'product_property_title',
+ 			'label' => 'Title',
+ 			'caption' => '',
+ 			'required' => 'n',
+ 			'default' => 'Choose the flavour', 
+ 		),
+ 		'product_property_list' =>  array(
+ 			'type' 	=> 'textarea',
+ 			'name' 	=> 'product_property_list',
+ 			'label' => 'Property',
+ 			'caption' => '',
+ 			'required' => 'n',
+ 			'default' => '', 
+ 		),
+ 	),
+);
+$spProductMeta->create($args);

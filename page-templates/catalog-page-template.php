@@ -15,7 +15,6 @@ $description = $taxCurrent['description'];
 $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'asc';
 $orderby = isset($_GET['field']) ? sanitize_text_field($_GET['field']) : 'id';
 
-
 if($pageID == $shopPageID){
 	echo '<div class="catalog-menu container">';
         echo '<h1 class="catalog-title">'.get_the_title().'</h1>';
@@ -48,10 +47,6 @@ if($pageID == $shopPageID){
 	    echo '<a href="'.get_the_permalink($shopPageID).'">← Back to Shop</a>';
 	echo '</div>';
 }
-
-?>
-
-<?php 
 		
 $args = array(
 	'numberposts' 	=> 4, 

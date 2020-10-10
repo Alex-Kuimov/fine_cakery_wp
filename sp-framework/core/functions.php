@@ -795,8 +795,7 @@ function sp_get_product_tags($productID, $tags, $result=null){
     return $result;
 }
 
-
-function sp_get_variant_product($productID, $type=null, $result=null){
+function sp_get_variant_product($productID, $result=null){
     $product = wc_get_product($productID);
     $childrenIDs = $product->get_children();
 
@@ -840,7 +839,6 @@ function sp_get_variant_product($productID, $type=null, $result=null){
 
     return $result;
 }    
-
 
 function sp_get_product_price($productID, $productPrice=null){
     $regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
@@ -892,5 +890,24 @@ function sp_get_product_price($productID, $productPrice=null){
     }
 
     return $productPrice;
+}
 
+function sp_get_additional_product($productID, $result=null){
+
+    $title = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_title');
+    $list = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_list');
+    $lists = explode('|', $list);
+
+    if($list){
+        $result .= '<p class="product__select-title">Choose the flavour:</p>';
+        $result .= '<select class="product__select">';
+
+            foreach ($lists as $list) {
+                $result .= '<option value="'.$list.'">'.$list.'</option>';
+            }
+
+        $result .= '</select>';
+    }    
+
+    return $result;
 }
