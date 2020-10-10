@@ -21,7 +21,6 @@ jQuery(document).ready(($) => {
 
             $('.show-menu').on('click', frontEnd.menuShow);
             $('.close-menu').on('click', frontEnd.menuHide);
-
         },
 
         sliders: function() {
@@ -127,8 +126,84 @@ jQuery(document).ready(($) => {
 
     }
 
-    frontEnd.init();
 
-    /*alert(window.innerWidth);*/
+    let backEnd = {
+        actions: function() {
+            $('.product__variant').on('change', backEnd.showVariant);
+            $('.add-to-cart').on('click', backEnd.addToCart);
+        },
+
+        showVariant: function() {
+            let variantID = $(this).val(),
+                productID = $(this).attr('data-product-id');
+
+            $('.add-to-cart').attr('variant-id', variantID);  
+
+            let formData = new FormData();
+                formData.append('action', 'sp_get_product_variable');
+                formData.append('variantID', variantID);
+                formData.append('productID', productID);
+
+            $.ajax({
+                url: spJs.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {  
+                    let regularPrice = parseFloat(data.regularPrice),
+                        salePrice = parseFloat(data.salePrice);
+
+                    regularPrice = regularPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');  
+                    salePrice = salePrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& '); 
+                    
+                    regularPrice = regularPrice.replace('.00', '');
+                    salePrice = salePrice.replace('.00', '');
+
+                    if(salePrice != regularPrice){  
+                        
+                    } else {                       
+                        $('.catalog__price').html(regularPrice);
+                        $('.catalog__price').attr('data-price',data.regularPrice);
+                    }
+                }
+            });
+        },
+
+        addToCart: function(){
+            let productID = $(this).attr('data-product-id'),
+                variationID = $(this).attr('variant-id');
+
+            let formData = new FormData();
+                formData.append('action', 'sp_add_to_cart');
+                formData.append('productID', productID);
+                formData.append('variationID', variationID);
+                
+            $.ajax({
+                url: spJs.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log(data);
+
+                    $('.floating-cart__count').html(data.cartCount);
+                }
+
+            });
+        },
+
+        init: function() {
+            backEnd.actions();
+        },
+    }
+
+    frontEnd.init();
+    backEnd.init();
 
 });

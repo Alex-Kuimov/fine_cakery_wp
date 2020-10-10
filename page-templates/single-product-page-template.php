@@ -66,7 +66,7 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
         <div class="catalog__wrap">
             <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
             <?php echo sp_get_product_price($productID);?>
-            <button class="button product__button">add to cart</button>
+            <button class="button product__button add-to-cart" variant-id="" data-product-id="<?php echo get_the_ID();?>">add to cart</button>
         </div>
 
         <div class="product__description">

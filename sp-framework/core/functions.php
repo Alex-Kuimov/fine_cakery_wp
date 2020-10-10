@@ -809,7 +809,7 @@ function sp_get_variant_product($productID, $result=null){
         }
 
         $result .= '<p class="product__select-title">'.$attributeLabelName.':</p>';
-        $result .= '<select class="product__select">';
+        $result .= '<select class="product__select product__variant" data-product-id="'.$productID.'">';
 
         foreach ($variations as $variation) {
             foreach ($childrenIDs as $childrenID) { 

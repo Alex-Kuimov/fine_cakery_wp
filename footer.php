@@ -28,7 +28,7 @@ echo sp_get_section_instagram();
 </div>
 
 <div class="floating-cart">
-    <span class="floating-cart__count">9</span>
+    <span class="floating-cart__count">0</span>
     <img src="<?php echo esc_url(get_template_directory_uri())?>/assets/img/cart.svg" alt="image">
 </div>
 
