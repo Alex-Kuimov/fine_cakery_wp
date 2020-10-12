@@ -74,12 +74,14 @@ if(isset($childrenIDs[0])){
         <?php echo sp_get_additional_product($productID);?>
 
         <div class="catalog__wrap">
-            <div class="catalog-price-group price-ajax-result">
+            <div class="catalog-price-group price-ajax-result-<?php echo $productID;?> ">
                <?php echo sp_get_product_price($productID);?>    
             </div>    
-            <button class="button product__button add-to-cart <?php echo $class;?>" variant-id="<?php echo $variantID;?>" data-product-id="<?php echo get_the_ID();?>">
+            
+            <button class="button product__button add-to-cart add-to-cart-<?php echo $productID;?> <?php echo $class;?>" variant-id="<?php echo $variantID;?>" data-product-id="<?php echo $productID;?>">
                 <?php echo $btnTitle;?>
             </button>
+
             <div class="go-to-cart-wrap">
                 <a class="go-to-cart" href="<?php echo $cartUrl;?>">Go to Cart →</a>
             </div>    

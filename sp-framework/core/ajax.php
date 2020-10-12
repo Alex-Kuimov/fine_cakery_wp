@@ -75,7 +75,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
                 $result .= '<p>'.$title.'</p>';
                 $result .= '<div class="catalog__wrap">';
 	            
-	            $result .= '<div class="catalog-price-group price-ajax-result">';
+	            $result .= '<div class="catalog-price-group price-ajax-result-'.$productID.'">';
 	               $result .= sp_get_product_price($productID);
 	            $result .= '</div>';
 
@@ -88,7 +88,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 
         $result .= '<div class="modal-product-btn-wrap">';
             $result .= '<button class="button product__button product__button-cancel">Cancel</button>';
-            $result .= '<button class="button product__button add-to-cart" variant-id="'.$variantID.'" data-product-id="'.$productID.'">add to cart</button>';
+            $result .= '<button class="button product__button add-to-cart add-to-cart-'.$productID.'" variant-id="'.$variantID.'" data-product-id="'.$productID.'">add to cart</button>';
         $result .= '</div>';    
 
 		echo json_encode(array('result' => $result));
