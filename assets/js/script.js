@@ -142,7 +142,7 @@ jQuery(document).ready(($) => {
     let backEnd = {
         actions: function() {
             $('body').on('change', '.product__variant', backEnd.showVariant);
-            $('.add-to-cart').on('click', backEnd.addToCart);
+            $('body').on('click', '.add-to-cart', backEnd.addToCart);
             $('.show-modal').on('click', backEnd.showModal);
         },
 
@@ -223,6 +223,10 @@ jQuery(document).ready(($) => {
                     $('.floating-cart__count').html(data.cartCount);
                     $('.go-to-cart-wrap').fadeIn('500').css('display', 'flex');
                     $('.add-to-cart-'+productID).html('In the cart');
+
+                    setTimeout(function () {
+                        $('.modal-cover').fadeOut('700');
+                    }, 500);
                 }
 
             });

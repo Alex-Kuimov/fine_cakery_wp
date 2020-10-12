@@ -15,13 +15,8 @@ $product = wc_get_product($productID);
 $childrenIDs = $product->get_children();
 $variantID = 0;
 
-$inCart = SP_Framework_Woocommerce::in_cart($productID);
-$btnTitle = $inCart == true ? 'In the cart' : 'add to cart';
-$class = $inCart == true ? 'disable' : '';
+if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
-if(isset($childrenIDs[0])){
-    $variantID  = $childrenIDs[0];
-}
 ?>
 
 
@@ -79,7 +74,7 @@ if(isset($childrenIDs[0])){
             </div>    
             
             <button class="button product__button add-to-cart add-to-cart-<?php echo $productID;?> <?php echo $class;?>" variant-id="<?php echo $variantID;?>" data-product-id="<?php echo $productID;?>">
-                <?php echo $btnTitle;?>
+                Add to Cart
             </button>
 
             <div class="go-to-cart-wrap">
