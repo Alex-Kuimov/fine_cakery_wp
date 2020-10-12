@@ -498,3 +498,18 @@ textarea {
     margin-left: 20px;
     cursor: pointer;
 }
+
+/*
+* Woocommerce
+*/
+
+.woocommerce a.remove {
+    margin: 0 auto;
+    color: transparent !important;
+}
+
+.woocommerce table.cart img {
+    margin: 0;
+    width: 120px;
+    height: 120px;
+}
