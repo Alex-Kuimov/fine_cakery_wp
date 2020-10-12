@@ -711,7 +711,7 @@ function sp_get_catalog_items($args, $tags, $result=null){
                     $result .= sp_get_product_price($productID);   
                 $result .= '</div>';
 
-                $result .= '<p class="catalog__button button show-modal" product-id="'.$productID.'">order</p>';
+                $result .= '<p class="catalog__button button show-modal" data-modal="addToCart" product-id="'.$productID.'">order</p>';
 
             $result .= '</a>';
         }

@@ -44,37 +44,7 @@ echo sp_get_section_instagram();
             <img src="<?php echo esc_url(get_template_directory_uri())?>/assets/img/close-menu.svg" class="modal__close close-modal">
         </div>
         
-        <div class="modal__body">
-
-            <div class="modal-product-wrap">
-                <div class="modal-product-wrap__item">
-                    <img src="http://127.0.0.1/fine_cakery/wp-content/uploads/2020/10/i01.jpg" alt="image">
-                </div>    
-                <div class="modal-product-wrap__item">
-                    <p>Blueberry Chocolate</p>
-                    <div class="catalog__wrap">
-                        <span class="catalog__currency">CHF</span>
-                        <span class="catalog__price">80</span>
-                    </div>
-                </div>
-            </div>
-
-            <p class="product__select-title">Choose the size:</p>
-            <select class="product__select product__variant" data-product-id="69">
-                <option value="84">16cm - 8 points</option>
-                <option value="85">20cm - 12 points</option>
-            </select>
-
-            <p class="product__select-title">Choose the flavour:</p>
-            <select class="product__select">
-                <option value="Vanilla ">Vanilla </option>
-                <option value=" Somethings"> Somethings</option>
-            </select>
-
-            <div class="modal-product-btn-wrap">
-                <button class="button product__button product__button-cancel">Cancel</button>
-                <button class="button product__button add-to-cart" variant-id="" data-product-id="69">add to cart</button>
-            </div>    
+        <div class="modal__body modal-ajax-result">
 
         </div>    
     </div>    

@@ -143,6 +143,7 @@ jQuery(document).ready(($) => {
         actions: function() {
             $('.product__variant').on('change', backEnd.showVariant);
             $('.add-to-cart').on('click', backEnd.addToCart);
+            $('.show-modal').on('click', backEnd.showModal);
         },
 
         showVariant: function() {
@@ -224,6 +225,34 @@ jQuery(document).ready(($) => {
                     $('.add-to-cart').html('In the cart');
                 }
 
+            });
+        },
+
+        showModal: function(){
+            let productID = $(this).attr('product-id'),
+                dataModal = $(this).attr('data-modal');
+
+            let formData = new FormData();
+            formData.append('action', 'sp_show_modal');
+            formData.append('dataModal', dataModal);
+            
+            if(dataModal == 'addToCart'){
+                formData.append('productID', productID);
+            }  
+
+            $('.modal-ajax-result').html('');
+
+            $.ajax({
+                url: spJs.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $('.modal-ajax-result').html(data.result);
+                }
             });
         },
 

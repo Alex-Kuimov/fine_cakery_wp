@@ -48,3 +48,52 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 	}
 }
 $spAddToCart = new SP_Add_To_Cart('sp_add_to_cart');
+
+
+
+class Sp_Show_Modal extends SP_Framework_AJAX {
+	function ajax_action() {
+		$productID = sanitize_text_field($_POST['productID']);
+		$title = get_the_title($productID);
+		$image = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
+
+		$product = wc_get_product($productID);
+		$childrenIDs = $product->get_children();
+		$variantID = 0;
+
+		if(isset($childrenIDs[0])){
+			$variantID = $childrenIDs[0];
+		}
+
+		$result = '';
+
+		$result .= '<div class="modal-product-wrap">';
+            $result .= '<div class="modal-product-wrap__item">';
+                $result .= '<img src="'.$image.'" alt="image: '.$title.'">';
+            $result .= '</div>';    
+            $result .= '<div class="modal-product-wrap__item">';
+                $result .= '<p>'.$title.'</p>';
+                $result .= '<div class="catalog__wrap">';
+	            
+	            $result .= '<div class="catalog-price-group price-ajax-result">';
+	               $result .= sp_get_product_price($productID);
+	            $result .= '</div>';
+
+                $result .= '</div>';
+            $result .= '</div>';
+        $result .= '</div>';
+
+        $result .= sp_get_variant_product($productID);
+        $result .= sp_get_additional_product($productID);
+
+        $result .= '<div class="modal-product-btn-wrap">';
+            $result .= '<button class="button product__button product__button-cancel">Cancel</button>';
+            $result .= '<button class="button product__button add-to-cart" variant-id="'.$variantID.'" data-product-id="'.$productID.'">add to cart</button>';
+        $result .= '</div>';    
+
+		echo json_encode(array('result' => $result));
+
+		wp_die();
+	}
+}
+$spShowModal = new Sp_Show_Modal('sp_show_modal');
