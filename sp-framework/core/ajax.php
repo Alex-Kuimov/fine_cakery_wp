@@ -12,6 +12,8 @@ class SP_Get_Product_Variable extends SP_Framework_AJAX {
 		$variableP = new WC_Product_Variable($productID);
 		$prices = $variableP->get_variation_prices();
 
+		$symbol = get_woocommerce_currency_symbol();
+
 		if(isset($prices['regular_price'][$variantID])){
 			$regularPrice = $prices['regular_price'][$variantID];
 		}
@@ -20,7 +22,7 @@ class SP_Get_Product_Variable extends SP_Framework_AJAX {
 			$salePrice = $prices['sale_price'][$variantID];
 		}
 
-		echo json_encode(array('regularPrice' => $regularPrice, 'salePrice' => $salePrice));
+		echo json_encode(array('regularPrice' => $regularPrice, 'salePrice' => $salePrice, 'symbol' => $symbol));
 
 		wp_die();
 	}

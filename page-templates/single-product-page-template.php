@@ -5,13 +5,23 @@ Template Name: Single product page
 
 get_header();
 
-$productTitle 	= get_the_title();
-$productID      = get_the_ID();
-$productImage   = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
-$productText    = SP_Framework_Post_Type_Utility::get_content($productID);
-
+$productTitle = get_the_title();
+$productID = get_the_ID();
+$productImage = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
+$productText = SP_Framework_Post_Type_Utility::get_content($productID);
 $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
+$cartUrl = SP_Framework_Woocommerce::get_cart_url();
+$product = wc_get_product($productID);
+$childrenIDs = $product->get_children();
+$variantID = 0;
 
+$inCart = SP_Framework_Woocommerce::in_cart($productID);
+$btnTitle = $inCart == true ? 'In the cart' : 'add to cart';
+$class = $inCart == true ? 'disable' : '';
+
+if(isset($childrenIDs[0])){
+    $variantID  = $childrenIDs[0];
+}
 ?>
 
 
@@ -64,18 +74,15 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
         <?php echo sp_get_additional_product($productID);?>
 
         <div class="catalog__wrap">
-            <div class="catalog-price-group">
-                <div class="catalog-price-wrap catalog-price-old">
-                    <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
-                    <?php echo sp_get_product_price($productID);?>
-                </div>    
-                
-                <div class="catalog-price-wrap">
-                    <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
-                    <?php echo sp_get_product_price($productID);?>
-                </div>    
+            <div class="catalog-price-group price-ajax-result">
+               <?php echo sp_get_product_price($productID);?>    
             </div>    
-            <button class="button product__button add-to-cart" variant-id="" data-product-id="<?php echo get_the_ID();?>">add to cart</button>
+            <button class="button product__button add-to-cart <?php echo $class;?>" variant-id="<?php echo $variantID;?>" data-product-id="<?php echo get_the_ID();?>">
+                <?php echo $btnTitle;?>
+            </button>
+            <div class="go-to-cart-wrap">
+                <a class="go-to-cart" href="<?php echo $cartUrl;?>">Go to Cart →</a>
+            </div>    
         </div>
 
         <div class="product__description">

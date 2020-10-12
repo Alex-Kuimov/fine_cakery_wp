@@ -807,6 +807,24 @@
     display: block;
 }
 
+.product .catalog-price-regular{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+}
+
+.go-to-cart-wrap{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.go-to-cart{
+    font-size: 16px;
+    color: #55403B;
+}
 
 /*
 * Reviews

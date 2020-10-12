@@ -166,7 +166,9 @@ jQuery(document).ready(($) => {
                 contentType: false,
                 success: function (data) {  
                     let regularPrice = parseFloat(data.regularPrice),
-                        salePrice = parseFloat(data.salePrice);
+                        salePrice = parseFloat(data.salePrice),
+                        symbol = data.symbol,
+                        productPrice = '';
 
                     regularPrice = regularPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');  
                     salePrice = salePrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& '); 
@@ -176,10 +178,25 @@ jQuery(document).ready(($) => {
 
                     if(salePrice != regularPrice){  
                         
+                        productPrice += '<div class="catalog-price-wrap catalog-price-old">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+salePrice+'</span>';
+                        productPrice += '</div>';    
+
+                        productPrice += '<div class="catalog-price-wrap catalog-price-new">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
+                        productPrice += '</div> ';
+
                     } else {                       
-                        $('.catalog__price').html(regularPrice);
-                        $('.catalog__price').attr('data-price',data.regularPrice);
+                        productPrice += '<div class="catalog-price-wrap catalog-price-regular">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
+                        productPrice += '</div> ';
                     }
+
+                    $('.price-ajax-result').html(productPrice);
+                    $('.sp-add-to-cart').attr('variant-id', variantID);
                 }
             });
         },
@@ -202,9 +219,9 @@ jQuery(document).ready(($) => {
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    console.log(data);
-
                     $('.floating-cart__count').html(data.cartCount);
+                    $('.go-to-cart-wrap').fadeIn('500').css('display', 'flex');
+                    $('.add-to-cart').html('In the cart');
                 }
 
             });

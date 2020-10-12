@@ -708,20 +708,10 @@ function sp_get_catalog_items($args, $tags, $result=null){
                 $result .= '<span class="catalog__from">From</span>';
 
                 $result .= '<div class="catalog__wrap">';
-                    
-                    $result .= '<div class="catalog-price-wrap catalog-price-old">';
-                        $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().' </span>';
-                        $result .= sp_get_product_price($productID);
-                    $result .= '</div>';
-
-                    $result .= '<div class="catalog-price-wrap">';    
-                        $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().' </span>';
-                        $result .= sp_get_product_price($productID);
-                    $result .= '</div>';    
-
+                    $result .= sp_get_product_price($productID);   
                 $result .= '</div>';
 
-                $result .= '<p class="catalog__button button show-modal">order</p>';
+                $result .= '<p class="catalog__button button show-modal" product-id="'.$productID.'">order</p>';
 
             $result .= '</a>';
         }
@@ -866,8 +856,22 @@ function sp_get_product_price($productID, $productPrice=null){
 
         if($salePrice){
 
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-old">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$salePrice.'</span>';
+            $productPrice .= '</div>';    
+
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-new">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$regularPrice.'</span>';
+            $productPrice .= '</div> ';
+
         } else {
-            $productPrice = '<span class="catalog__price">'.$regularPrice.'</span>';
+            
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-regular">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$regularPrice.'</span>';
+            $productPrice .= '</div> ';
         }       
 
     } else {
@@ -892,8 +896,21 @@ function sp_get_product_price($productID, $productPrice=null){
 
         if($regularPrice != $salePrice){
 
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-old">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$salePrice.'</span>';
+            $productPrice .= '</div>';    
+
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-new">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$regularPrice.'</span>';
+            $productPrice .= '</div> ';
+
         } else {
-            $productPrice = '<span class="catalog__price">'.$regularPrice.'</span>';
+            $productPrice .= '<div class="catalog-price-wrap catalog-price-regular">';
+                $productPrice .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'&nbsp;</span>';
+                $productPrice .= '<span class="catalog__price">'.$regularPrice.'</span>';
+            $productPrice .= '</div> ';
         }
     
     }
