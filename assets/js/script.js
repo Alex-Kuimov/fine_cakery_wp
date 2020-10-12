@@ -141,7 +141,7 @@ jQuery(document).ready(($) => {
 
     let backEnd = {
         actions: function() {
-            $('.product__variant').on('change', backEnd.showVariant);
+            $('body').on('change', '.product__variant', backEnd.showVariant);
             $('.add-to-cart').on('click', backEnd.addToCart);
             $('.show-modal').on('click', backEnd.showModal);
         },
@@ -196,8 +196,8 @@ jQuery(document).ready(($) => {
                         productPrice += '</div> ';
                     }
 
-                    $('.price-ajax-result').html(productPrice);
-                    $('.sp-add-to-cart').attr('variant-id', variantID);
+                    $('.price-ajax-result-'+productID).html(productPrice);
+                    $('.sp-add-to-cart-'+productID).attr('variant-id', variantID);
                 }
             });
         },
