@@ -21,6 +21,9 @@ jQuery(document).ready(($) => {
 
             $('.show-menu').on('click', frontEnd.menuShow);
             $('.close-menu').on('click', frontEnd.menuHide);
+
+            $('.close-modal').on('click', frontEnd.closeModal);
+            $('.show-modal').on('click', frontEnd.showModal);
         },
 
         sliders: function() {
@@ -117,6 +120,15 @@ jQuery(document).ready(($) => {
             $('.header-lang').fadeOut('500');
             $('.close-menu').css('display', 'none');
             $('.show-menu').fadeIn('500');
+        },
+
+        closeModal: function(){
+            $('.modal-cover').fadeOut('500');
+        },
+
+        showModal: function(){
+            $('.modal-cover').fadeIn('500').css('display', 'flex');
+            return false;
         },
 
         init: function() {
