@@ -708,8 +708,17 @@ function sp_get_catalog_items($args, $tags, $result=null){
                 $result .= '<span class="catalog__from">From</span>';
 
                 $result .= '<div class="catalog__wrap">';
-                    $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().'</span>';
-                    $result .= sp_get_product_price($productID);
+                    
+                    $result .= '<div class="catalog-price-wrap catalog-price-old">';
+                        $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().' </span>';
+                        $result .= sp_get_product_price($productID);
+                    $result .= '</div>';
+
+                    $result .= '<div class="catalog-price-wrap">';    
+                        $result .= '<span class="catalog__currency">'.get_woocommerce_currency_symbol().' </span>';
+                        $result .= sp_get_product_price($productID);
+                    $result .= '</div>';    
+
                 $result .= '</div>';
 
                 $result .= '<p class="catalog__button button show-modal">order</p>';

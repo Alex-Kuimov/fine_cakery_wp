@@ -591,6 +591,20 @@
     font-size: 22px;
 }
 
+.catalog-price-wrap{
+    display: inline;
+    margin-right: 10px;
+}
+
+.catalog-price-old{
+    text-decoration: line-through;
+}
+
+.catalog-price-old .catalog__currency,
+.catalog-price-old .catalog__price{
+    font-size: 14px;
+}
+
 .catalog__from {
     font-size: 12px;
     color: #55403B;
@@ -786,6 +800,11 @@
     font-size: 20px;
     margin-bottom: 30px;
     margin-top: 20px;
+    display: flex;
+}
+
+.product .catalog-price-wrap{
+    display: block;
 }
 
 

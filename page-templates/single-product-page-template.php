@@ -64,8 +64,17 @@ $imageGallery = SP_Framework_Woocommerce::get_product_gallery($productID);
         <?php echo sp_get_additional_product($productID);?>
 
         <div class="catalog__wrap">
-            <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
-            <?php echo sp_get_product_price($productID);?>
+            <div class="catalog-price-group">
+                <div class="catalog-price-wrap catalog-price-old">
+                    <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
+                    <?php echo sp_get_product_price($productID);?>
+                </div>    
+                
+                <div class="catalog-price-wrap">
+                    <span class="catalog__currency"><?php echo get_woocommerce_currency_symbol()?></span>
+                    <?php echo sp_get_product_price($productID);?>
+                </div>    
+            </div>    
             <button class="button product__button add-to-cart" variant-id="" data-product-id="<?php echo get_the_ID();?>">add to cart</button>
         </div>
 
