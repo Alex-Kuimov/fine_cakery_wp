@@ -181,12 +181,12 @@ jQuery(document).ready(($) => {
                         
                         productPrice += '<div class="catalog-price-wrap catalog-price-old">';
                             productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
-                            productPrice += '<span class="catalog__price">'+salePrice+'</span>';
+                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
                         productPrice += '</div>';    
 
                         productPrice += '<div class="catalog-price-wrap catalog-price-new">';
                             productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
-                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
+                            productPrice += '<span class="catalog__price">'+salePrice+'</span>';
                         productPrice += '</div> ';
 
                     } else {                       
