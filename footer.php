@@ -27,10 +27,12 @@ echo sp_get_section_instagram();
 
 </div>
 
+<?php /*
 <a href="<?php echo SP_Framework_Woocommerce::get_cart_url();?>" class="floating-cart">
     <span class="floating-cart__count"><?php echo SP_Framework_Woocommerce::get_cart_count();?></span>
     <img src="<?php echo esc_url(get_template_directory_uri())?>/assets/img/cart.svg" alt="cart">
 </a>
+*/?>
 
 <div class="back-to-top">
     <i class="fas fa-chevron-up"></i>
