@@ -57,6 +57,7 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
             <div class="swiper-button-next swiper-button-black"></div>
             <div class="swiper-button-prev swiper-button-black"></div>
         </div>
+
     </div>
 
     <div class="product-wrap product-text-wrap">
@@ -85,8 +86,9 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
         <div class="product__description">
             <?php echo $productText;?>
         </div>    
-
     </div>
+
+    <?php echo do_shortcode('[addtoany]');?>
 
 </div>
 
@@ -109,6 +111,5 @@ $args = array(
 );
 
 echo sp_get_catalog_items($args, $tagsArray);
-
 
 get_footer();

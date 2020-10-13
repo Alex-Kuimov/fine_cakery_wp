@@ -32,6 +32,8 @@ $date = get_the_date('d.m.Y');
         while ( have_posts() ) : the_post();
             the_content();
         endwhile;
+
+        echo do_shortcode('[addtoany]');
         ?>
         </div>
 
@@ -40,4 +42,5 @@ $date = get_the_date('d.m.Y');
 
 <?php
 echo sp_get_gallery($postID);
+
 get_footer();
