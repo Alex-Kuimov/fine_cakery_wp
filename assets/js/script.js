@@ -204,13 +204,15 @@ jQuery(document).ready(($) => {
 
         addToCart: function(){
             let productID = $(this).attr('data-product-id'),
-                variationID = $(this).attr('variant-id');
+                variationID = $(this).attr('variant-id'),
+                additional = $('.product__additional-'+productID).val();
 
             let formData = new FormData();
                 formData.append('action', 'sp_add_to_cart');
                 formData.append('productID', productID);
                 formData.append('variationID', variationID);
-                
+                if(typeof(additional) != 'undefined')formData.append('additional', additional);
+
             $.ajax({
                 url: spJs.ajaxUrl,
                 type: 'POST',

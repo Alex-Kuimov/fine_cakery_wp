@@ -19,6 +19,16 @@ function sp_set_page_template($template){
 }
 add_filter('template_include', 'sp_set_page_template', 99);
 
+function apply_custom_title_to_cart_item( $cart_object ) {  
+    if( !WC()->session->__isset( "reload_checkout" )) {
+        foreach ( $cart_object->cart_contents as $key => $value ) {
+            if($value['data']->id == $value['custom_ID']){
+                $value['data']->set_name($value['custom_product_name']);
+            }           
+        }  
+    }  
+}
+add_action('woocommerce_before_calculate_totals', 'apply_custom_title_to_cart_item', 99);
 
 function sp_get_menu($type=null, $result=null){
 
@@ -926,7 +936,7 @@ function sp_get_additional_product($productID, $result=null){
 
     if($list){
         $result .= '<p class="product__select-title">Choose the flavour:</p>';
-        $result .= '<select class="product__select">';
+        $result .= '<select class="product__select product__additional-'.$productID.'">';
 
             foreach ($lists as $list) {
                 $result .= '<option value="'.$list.'">'.$list.'</option>';

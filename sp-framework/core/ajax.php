@@ -37,8 +37,16 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 		$productID = sanitize_text_field($_POST['productID']);
 		$productCount = 1;
 		$variationID = sanitize_text_field($_POST['variationID']);
+		$additional = sanitize_text_field($_POST['additional']);
+		$data = array();
+
+
+		if($additional){
+			$data['custom_ID'] = $productID;
+			$data['custom_product_name'] = get_the_title($productID).' - '.$additional;
+		}
            
-		$woocommerce->cart->add_to_cart($productID, $productCount, $variationID);
+		$woocommerce->cart->add_to_cart($productID, $productCount, $variationID, array(), $data);
 
 		$cartCount = SP_Framework_Woocommerce::get_cart_count();
 
