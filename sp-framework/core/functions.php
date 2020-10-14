@@ -544,14 +544,24 @@ function sp_get_section_contact($result=null){
 function sp_get_section_instagram($result=null){
 
     $title = get_theme_mod('sp_instagram_title');
+    $name = get_theme_mod('sp_instagram_name');
 
-    $result .= '<section class="instagram">';
+    $result .= '<section class="instagram container">';
         
         if($title){
             $result .= '<h2>'.$title.'</h2>';
         }
 
-        $result .= '<div class="instagram-wrap"></div>';
+        if($name){
+            $result .= '<p>'.$name.'</p>';
+        }    
+
+        $result .= '<div class="instagram-wrap">';
+
+            $result .= do_shortcode('[instagram-feed num=6 cols=1]');
+
+        $result .= '</div>';
+
     $result .= '</section>';
 
     return $result;

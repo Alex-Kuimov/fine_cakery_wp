@@ -135,6 +135,11 @@ $args = array(
                     'type' => 'input', 
                     'label' => 'Title',
                 ),
+                'sp_instagram_name' => array(
+                    'name' => 'sp_instagram_name',
+                    'type' => 'input', 
+                    'label' => 'Name',
+                ),
             ),
         ),	
         'footer' => array(
