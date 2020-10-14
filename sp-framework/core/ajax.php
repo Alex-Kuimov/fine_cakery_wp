@@ -119,7 +119,14 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 	    	$emailText .= '<strong>'.$key.'</strong>: '.$value.'<br>';
 	    }
 
-	    add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
+		add_filter('wp_mail_charset', function(){
+			return 'utf-8';
+		});
+
+		add_filter('wp_mail_charset', function(){
+			return 'text/html';
+		});
+
 		$argsMail = array(
 			'email_to' 		=> $mailTo,
 			'email_from' 	=> $mailFrom,
