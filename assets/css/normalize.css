@@ -7,6 +7,17 @@ body {
   margin: 0;
 }
 
+html *,
+body * {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
 main {
   display: block;
 }
@@ -187,4 +198,17 @@ select {
   background-position: 96% 50%!important;
   background-repeat: no-repeat!important;
   background-size: 12px!important;
+}
+
+input,
+select,
+textarea {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
