@@ -1528,8 +1528,11 @@ ul.payment_methods li::before {
     top: 10px;
 }
 
-
 .woocommerce form .form-row .input-checkbox{
     width: 18px;
     height: 18px;  
+}
+
+.cn-button.bootstrap{
+    background: #55403b!important;
 }
