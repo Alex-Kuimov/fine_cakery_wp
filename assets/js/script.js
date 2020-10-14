@@ -141,9 +141,10 @@ jQuery(document).ready(($) => {
 
     let backEnd = {
         actions: function() {
+            $('.show-modal').on('click', backEnd.showModal);
             $('body').on('change', '.product__variant', backEnd.showVariant);
             $('body').on('click', '.add-to-cart', backEnd.addToCart);
-            $('.show-modal').on('click', backEnd.showModal);
+            $('body').on('submit', '.contact-us__form', backEnd.sendForm);
         },
 
         showVariant: function() {
@@ -260,6 +261,53 @@ jQuery(document).ready(($) => {
                     $('.modal-ajax-result').html(data.result);
                 }
             });
+        },
+
+        getFormData: function(form){
+            let formData = {};
+
+            $(form+' .sp-form-field').each(function(i, item) {
+                let data  = item.getAttribute('data-field'),
+                    value = item.value;
+
+                formData[data] = value;                
+            });        
+
+            return formData; 
+        },
+
+        sendForm: function(){
+            let formData = new FormData(), 
+                formID = $(this).attr('id'),
+                data = {};
+                
+            if(formID == 'contact-form'){
+                data = backEnd.getFormData('.contact-us__form');
+                formData.append('action', 'sp_send_contact_form');
+            }    
+
+            formData.append('data', JSON.stringify(data));
+            
+            $.ajax({
+                url: spJs.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {
+
+                    $('.sp-form-field').val('');
+
+                    setTimeout(function () {
+                       
+                    }, 500);
+                }
+            });
+
+            return false;
+
         },
 
         init: function() {

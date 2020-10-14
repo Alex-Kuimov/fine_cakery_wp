@@ -528,10 +528,10 @@ function sp_get_section_contact($result=null){
 
             $result .= sp_get_contacts('front');
 
-            $result .= '<form class="contact-us__item contact-us__form">';
-                $result .= '<input type="text" placeholder="Your e-mail">';
-                $result .= '<input type="text" placeholder="Your name">';
-                $result .= '<textarea placeholder="Your comment"></textarea>';
+            $result .= '<form class="contact-us__item contact-us__form" id="contact-form">';
+                $result .= '<input type="text" class="sp-form-field" data-field="E-mail" placeholder="Your e-mail" required>';
+                $result .= '<input type="text" class="sp-form-field" data-field="Name" placeholder="Your name" required>';
+                $result .= '<textarea class="sp-form-field" data-field="Comment" placeholder="Your comment" required></textarea>';
                 $result .= '<button class="button">Send message</button>';
             $result .= '</form>';
 

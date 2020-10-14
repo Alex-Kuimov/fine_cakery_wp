@@ -94,7 +94,8 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
 <section class="reviews">
     <h2>Reviews</h2>
-    <div class="reviews-wrap"></div>
+    <div class="reviews-wrap">
+    </div>
 </section>
 
 <div class="catalog-description container">

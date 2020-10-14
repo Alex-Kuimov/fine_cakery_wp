@@ -58,7 +58,6 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 $spAddToCart = new SP_Add_To_Cart('sp_add_to_cart');
 
 
-
 class Sp_Show_Modal extends SP_Framework_AJAX {
 	function ajax_action() {
 		$productID = sanitize_text_field($_POST['productID']);
@@ -105,3 +104,32 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 	}
 }
 $spShowModal = new Sp_Show_Modal('sp_show_modal');
+
+
+class SP_Send_Contact_Form extends SP_Framework_AJAX {
+	function ajax_action() {
+		$postData = sanitize_text_field($_POST['data']);
+		$postData = stripslashes($postData);
+		$postData = json_decode($postData, true);
+
+		$mailTo = get_theme_mod('notification_email');
+		$mailFrom = get_theme_mod('sender_email');
+
+		foreach ($postData as $key => $value) {
+	    	$emailText .= '<strong>'.$key.'</strong>: '.$value.'<br>';
+	    }
+
+		$argsMail = array(
+			'email_to' 		=> $mailTo,
+			'email_from' 	=> $mailFrom,
+			'from'			=> 'The Fine Cakery',
+			'subject' 		=> 'Message from contact form',
+			'message'		=> $emailText,
+		);	
+		
+		SP_Framework_Mail::send($argsMail);
+
+		wp_die();
+	}
+}
+$spSendContactForm = new Sp_Send_Contact_Form('sp_send_contact_form');

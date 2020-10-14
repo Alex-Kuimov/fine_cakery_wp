@@ -147,7 +147,23 @@ $args = array(
                     'label' => 'Copyright',
                 ),
             ),
-        ),	
+        ),
+        'notification_block' => array(
+            'name'  => 'notification_block',
+            'title' => 'Notification',
+            'fields' => array(
+                'notification_email' => array(
+                    'name' => 'notification_email',
+                    'type' => 'input', 
+                    'label' => 'Notification E-mail',
+                ), 
+                'sender_email' => array(
+                    'name' => 'sender_email',
+                    'type' => 'input', 
+                    'label' => 'Sender E-mail',
+                ), 
+            ),
+        ),
     ),
 );
 
