@@ -293,6 +293,13 @@ jQuery(document).ready(($) => {
             $('.modal__title').html('Message');
             $('.modal-ajax-result').html('');
 
+            $('.sp-form-field').val('');
+
+            setTimeout(function () {
+                $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                frontEnd.showModal();                      
+            }, 500);
+
             $.ajax({
                 url: spJs.ajaxUrl,
                 type: 'POST',
@@ -303,12 +310,6 @@ jQuery(document).ready(($) => {
                 contentType: false,
                 success: function (data) {
 
-                    $('.sp-form-field').val('');
-
-                    setTimeout(function () {
-                        $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
-                        frontEnd.showModal();                      
-                    }, 500);
                 }
             });
 
