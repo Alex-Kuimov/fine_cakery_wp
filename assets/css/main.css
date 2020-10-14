@@ -897,6 +897,9 @@
     padding: 40px;
 }
 
+.modal__body .success{
+    text-align: center;
+}
 
 /*
 * WooCommerce

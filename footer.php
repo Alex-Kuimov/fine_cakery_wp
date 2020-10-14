@@ -40,7 +40,7 @@ echo sp_get_section_instagram();
 <div class="modal-cover">
     <div class="modal">
         <div class="modal__header">
-            <p class="modal__title">Options</p>
+            <p class="modal__title"></p>
             <img src="<?php echo esc_url(get_template_directory_uri())?>/assets/img/close-menu.svg" class="modal__close close-modal">
         </div>
         

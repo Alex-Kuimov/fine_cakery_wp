@@ -247,6 +247,7 @@ jQuery(document).ready(($) => {
                 formData.append('productID', productID);
             }  
 
+            $('.modal__title').html('Options');
             $('.modal-ajax-result').html('');
 
             $.ajax({
@@ -288,6 +289,10 @@ jQuery(document).ready(($) => {
 
             formData.append('data', JSON.stringify(data));
             
+
+            $('.modal__title').html('Message');
+            $('.modal-ajax-result').html('');
+
             $.ajax({
                 url: spJs.ajaxUrl,
                 type: 'POST',
@@ -301,7 +306,8 @@ jQuery(document).ready(($) => {
                     $('.sp-form-field').val('');
 
                     setTimeout(function () {
-                       
+                        $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                        frontEnd.showModal();                      
                     }, 500);
                 }
             });
