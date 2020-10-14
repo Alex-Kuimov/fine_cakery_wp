@@ -119,6 +119,7 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 	    	$emailText .= '<strong>'.$key.'</strong>: '.$value.'<br>';
 	    }
 
+	    add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
 		$argsMail = array(
 			'email_to' 		=> $mailTo,
 			'email_from' 	=> $mailFrom,
@@ -126,7 +127,7 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 			'subject' 		=> 'Message from contact form',
 			'message'		=> $emailText,
 		);	
-		
+
 		SP_Framework_Mail::send($argsMail);
 
 		wp_die();
