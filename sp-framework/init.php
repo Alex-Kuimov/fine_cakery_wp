@@ -5,6 +5,7 @@ if (is_plugin_active('sp-framework/sp-framework.php')) {
 
 
 	define('SHOP_PAGE_ID', 15);
+	define('PRIVACY_POLICY_PAGE_ID', 15);
 
 	require get_template_directory() . '/sp-framework/core/enqueue.php';
 	require get_template_directory() . '/sp-framework/core/post-types.php';
