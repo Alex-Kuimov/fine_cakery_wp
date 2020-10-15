@@ -61,42 +61,64 @@ $spAddToCart = new SP_Add_To_Cart('sp_add_to_cart');
 class Sp_Show_Modal extends SP_Framework_AJAX {
 	function ajax_action() {
 		$productID = sanitize_text_field($_POST['productID']);
-		$title = get_the_title($productID);
-		$image = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
+		$dataModal = sanitize_text_field($_POST['dataModal']);
 
-		$product = wc_get_product($productID);
-		$childrenIDs = $product->get_children();
-		$variantID = 0;
+		if($dataModal == 'addToCart'){
+			$title = get_the_title($productID);
+			$image = SP_Framework_Post_Type_Utility::get_image($productID, 'full');
 
-		if(isset($childrenIDs[0])){
-			$variantID = $childrenIDs[0];
-		}
+			$product = wc_get_product($productID);
+			$childrenIDs = $product->get_children();
+			$variantID = 0;
 
-		$result = '';
+			if(isset($childrenIDs[0])){
+				$variantID = $childrenIDs[0];
+			}
 
-		$result .= '<div class="modal-product-wrap">';
-            $result .= '<div class="modal-product-wrap__item">';
-                $result .= '<img src="'.$image.'" alt="image: '.$title.'">';
-            $result .= '</div>';    
-            $result .= '<div class="modal-product-wrap__item">';
-                $result .= '<p>'.$title.'</p>';
-                $result .= '<div class="catalog__wrap">';
-	            
-	            $result .= '<div class="catalog-price-group price-ajax-result-'.$productID.'">';
-	               $result .= sp_get_product_price($productID);
+			$result = '';
+
+			$result .= '<div class="modal-product-wrap">';
+	            $result .= '<div class="modal-product-wrap__item">';
+	                $result .= '<img src="'.$image.'" alt="image: '.$title.'">';
+	            $result .= '</div>';    
+	            $result .= '<div class="modal-product-wrap__item">';
+	                $result .= '<p>'.$title.'</p>';
+	                $result .= '<div class="catalog__wrap">';
+		            
+		            $result .= '<div class="catalog-price-group price-ajax-result-'.$productID.'">';
+		               $result .= sp_get_product_price($productID);
+		            $result .= '</div>';
+
+	                $result .= '</div>';
 	            $result .= '</div>';
+	        $result .= '</div>';
 
-                $result .= '</div>';
-            $result .= '</div>';
-        $result .= '</div>';
+	        $result .= sp_get_variant_product($productID);
+	        $result .= sp_get_additional_product($productID);
 
-        $result .= sp_get_variant_product($productID);
-        $result .= sp_get_additional_product($productID);
+	        $result .= '<div class="modal-product-btn-wrap">';
+	            $result .= '<button class="button product__button product__button-cancel">Cancel</button>';
+	            $result .= '<button class="button product__button add-to-cart add-to-cart-'.$productID.'" variant-id="'.$variantID.'" data-product-id="'.$productID.'">add to cart</button>';
+	        $result .= '</div>';  
+	    }      
 
-        $result .= '<div class="modal-product-btn-wrap">';
-            $result .= '<button class="button product__button product__button-cancel">Cancel</button>';
-            $result .= '<button class="button product__button add-to-cart add-to-cart-'.$productID.'" variant-id="'.$variantID.'" data-product-id="'.$productID.'">add to cart</button>';
-        $result .= '</div>';    
+
+	    if($dataModal == 'review'){
+	    	$result .= '<form class="review-form" id="review-form">';
+		    	$result .= '<div class="review-form-wrap">';
+		    		
+		    		$result .= '<input type="text" class="sp-form-field" data-field="email" placeholder="Your e-mail" required="">';
+		    		$result .= '<input type="text" class="sp-form-field" data-field="name" placeholder="Your name" required="">';
+		    		$result .= '<textarea class="sp-form-field" data-field="review" placeholder="Your review" required=""></textarea>';
+
+		    	$result .= '</div>';
+
+		    	$result .= '<div class="review-form-btn-wrap">';
+		            $result .= '<button class="button reviews__button" data-product-id="'.$productID.'">Send</button>';
+		        $result .= '</div>';
+
+	        $result .= '</form>';
+	    }
 
 		echo json_encode(array('result' => $result));
 
@@ -135,3 +157,39 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 	}
 }
 $spSendContactForm = new Sp_Send_Contact_Form('sp_send_contact_form');
+
+
+
+class SP_Send_Review extends SP_Framework_AJAX {
+	function ajax_action() {
+		$productID = sanitize_text_field($_POST['productID']);
+		$title = get_the_title($productID);
+		//$rating 	= sanitize_text_field($_POST['rating']);
+
+
+		$postData 	= sanitize_text_field($_POST['data']);
+		$postData 	= stripslashes($postData);
+		$postData 	= json_decode($postData, true);
+
+		$data = array(
+			'comment_post_ID'      => $productID,
+			'comment_author'       => $postData['name'],
+			'comment_author_email' => $postData['email'],
+			'comment_content'      => $postData['review'],
+			//'user_id'              => 1,
+			'comment_approved'     => 0,
+			'comment_author_url'   => $title,
+			//'comment_karma'        => $rating,	
+		);
+
+		$commentID = wp_insert_comment(wp_slash($data));
+
+		if($commentID){
+			update_post_meta($commentID, 'comment_title', $title);
+			//update_post_meta($commentID, 'comment_rating', $rating);
+		}
+
+		wp_die();
+	}
+}
+$spSendReview = new SP_Send_Review('sp_send_review');

@@ -490,7 +490,8 @@ textarea {
 * Product
 */
 
-.product__button {
+.product__button,
+.reviews__button {
     color: #fff;
     padding: 12px 25px;
     text-transform: uppercase;

@@ -692,10 +692,27 @@
 
 .reviews-wrap {
     width: 100%;
-    height: 350px;
-    background: #F8F5F2;
 }
 
+.review-form-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.review-form-wrap input,
+.review-form-wrap textarea{
+    width: 100%;
+}
+
+.review-form-btn-wrap{
+    margin-top: 20px;
+}
+
+.review-form-btn-wrap .reviews__button{
+    margin-left: 0px;
+}
 
 /*
 * Floating Cart

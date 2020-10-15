@@ -145,6 +145,7 @@ jQuery(document).ready(($) => {
             $('body').on('change', '.product__variant', backEnd.showVariant);
             $('body').on('click', '.add-to-cart', backEnd.addToCart);
             $('body').on('submit', '.contact-us__form', backEnd.sendForm);
+            $('body').on('submit', '.review-form', backEnd.sendForm);
         },
 
         showVariant: function() {
@@ -245,9 +246,14 @@ jQuery(document).ready(($) => {
             
             if(dataModal == 'addToCart'){
                 formData.append('productID', productID);
+                $('.modal__title').html('Options');
             }  
 
-            $('.modal__title').html('Options');
+            if(dataModal == 'review'){
+                formData.append('productID', productID);
+                $('.modal__title').html('Review');
+            }  
+
             $('.modal-ajax-result').html('');
 
             $.ajax({
@@ -285,20 +291,37 @@ jQuery(document).ready(($) => {
             if(formID == 'contact-form'){
                 data = backEnd.getFormData('.contact-us__form');
                 formData.append('action', 'sp_send_contact_form');
-            }    
+
+                $('.modal__title').html('Message');
+                $('.modal-ajax-result').html('');
+
+                setTimeout(function () {
+                    $('.sp-form-field').val('');
+                    $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                    frontEnd.showModal();                      
+                }, 500);
+            } 
+
+            if(formID == 'review-form'){
+                let productID = $(this).attr('data-product-id');
+
+                data = backEnd.getFormData('.review-form');
+                formData.append('action', 'sp_send_review');
+                formData.append('productID', productID);
+
+                $('.modal__title').html('Message');
+                $('.modal-ajax-result').html('');
+
+                setTimeout(function () {
+                    $('.sp-form-field').val('');
+                    $('.modal-ajax-result').html('<p class="success">Review sent successfully!</p>');                   
+                }, 500);
+
+                console.log(data);
+            }   
 
             formData.append('data', JSON.stringify(data));
             
-
-            $('.modal__title').html('Message');
-            $('.modal-ajax-result').html('');
-
-            setTimeout(function () {
-                $('.sp-form-field').val('');
-                $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
-                frontEnd.showModal();                      
-            }, 500);
-
             $.ajax({
                 url: spJs.ajaxUrl,
                 type: 'POST',

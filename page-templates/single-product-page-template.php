@@ -92,10 +92,15 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
 </div>
 
-<section class="reviews">
+<section class="reviews container">
     <h2>Reviews</h2>
+
+    <button class="button reviews__button show-modal" data-modal="review" product-id="<?php echo $productID;?>">Leave a review</button>
+
     <div class="reviews-wrap">
     </div>
+
+
 </section>
 
 <div class="catalog-description container">
