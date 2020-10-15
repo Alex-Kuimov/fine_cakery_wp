@@ -16,9 +16,7 @@ $childrenIDs = $product->get_children();
 $variantID = 0;
 
 if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
-
 ?>
-
 
 <div class="container product">
 
@@ -92,16 +90,7 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
 </div>
 
-<section class="reviews container">
-    <h2>Reviews</h2>
-
-    <button class="button reviews__button show-modal" data-modal="review" product-id="<?php echo $productID;?>">Leave a review</button>
-
-    <div class="reviews-wrap">
-    </div>
-
-
-</section>
+<?php echo sp_get_reviews($productID);?>
 
 <div class="catalog-description container">
     <h2>You may also like</h2>

@@ -104,7 +104,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 
 
 	    if($dataModal == 'review'){
-	    	$result .= '<form class="review-form" id="review-form">';
+	    	$result .= '<form class="review-form" id="review-form" product-id="'.$productID.'">';
 		    	$result .= '<div class="review-form-wrap">';
 		    		
 		    		$result .= '<input type="text" class="sp-form-field" data-field="email" placeholder="Your e-mail" required="">';
@@ -114,7 +114,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 		    	$result .= '</div>';
 
 		    	$result .= '<div class="review-form-btn-wrap">';
-		            $result .= '<button class="button reviews__button" data-product-id="'.$productID.'">Send</button>';
+		            $result .= '<button class="button reviews__button">Send</button>';
 		        $result .= '</div>';
 
 	        $result .= '</form>';
@@ -159,13 +159,11 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 $spSendContactForm = new Sp_Send_Contact_Form('sp_send_contact_form');
 
 
-
 class SP_Send_Review extends SP_Framework_AJAX {
 	function ajax_action() {
 		$productID = sanitize_text_field($_POST['productID']);
 		$title = get_the_title($productID);
 		//$rating 	= sanitize_text_field($_POST['rating']);
-
 
 		$postData 	= sanitize_text_field($_POST['data']);
 		$postData 	= stripslashes($postData);

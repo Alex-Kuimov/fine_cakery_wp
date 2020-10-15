@@ -30,6 +30,21 @@ function apply_custom_title_to_cart_item( $cart_object ) {
 }
 add_action('woocommerce_before_calculate_totals', 'apply_custom_title_to_cart_item', 99);
 
+function sp_decl_of_num($num, $result=null) {
+    $result = 'Reviews';
+
+    if($num == 0){
+        $result = 'Review';
+    }
+
+    if($num == 1){
+        $result = 'Review';   
+    }
+
+
+    return $result;
+}
+
 function sp_get_menu($type=null, $result=null){
 
     if($type=='header'){
@@ -954,6 +969,44 @@ function sp_get_additional_product($productID, $result=null){
 
         $result .= '</select>';
     }    
+
+    return $result;
+}
+
+function sp_get_reviews($productID, $result=null){
+
+    if($productID){
+        $args = array ('post_type' => 'product', 'post_id' => $productID);
+        $comments = get_comments($args);
+
+        $reviewCount = count($comments);
+
+        $result .= '<section class="reviews container">';
+            $result .= '<h2>Reviews</h2>';
+
+            $result .= '<p>'.$reviewCount.' '.sp_decl_of_num($reviewCount).'</p>';            
+            $result .= '<button class="button reviews__button show-modal" data-modal="review" product-id="'.$productID.'">Leave a review</button>';
+
+            if($comments){
+                $result .= '<div class="reviews-wrap">';
+                    foreach ($comments as $comment) {
+                        $date = date("d.m.Y", strtotime($comment->comment_date));
+                        $author = $comment->comment_author;
+                        $content = $comment->comment_content;
+
+                        $result .= '<div class="reviews__item">';
+                            $result .= '<span>'.$date.'</span> ';   
+                            $result .= '<h3>'.$author.'</h3>';
+                            $result .= '<p>'.$content.'</p>';
+                        $result .= '</div>';
+                    }    
+                $result .= '</div>';
+            }    
+
+
+        $result .= '</section>';
+    }    
+
 
     return $result;
 }

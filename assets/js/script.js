@@ -303,7 +303,7 @@ jQuery(document).ready(($) => {
             } 
 
             if(formID == 'review-form'){
-                let productID = $(this).attr('data-product-id');
+                let productID = $(this).attr('product-id');
 
                 data = backEnd.getFormData('.review-form');
                 formData.append('action', 'sp_send_review');
@@ -317,7 +317,7 @@ jQuery(document).ready(($) => {
                     $('.modal-ajax-result').html('<p class="success">Review sent successfully!</p>');                   
                 }, 500);
 
-                console.log(data);
+                console.log(productID);
             }   
 
             formData.append('data', JSON.stringify(data));
