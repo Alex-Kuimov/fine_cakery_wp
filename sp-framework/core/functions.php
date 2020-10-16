@@ -709,6 +709,38 @@ function sp_get_catalog_items($args, $tags, $result=null){
         }    
     }
 
+    if(isset($args['upsale']) && $args['upsale'] == true){
+        $productID  = get_the_ID();
+        $product    = new WC_Product($productID);
+        $upsells    = $product->get_upsell_ids();
+
+        if(!empty($upsells)){
+
+            if(count($upsells)>4){
+                $output = array_slice($upsells, 0, 4); 
+                $upsells = $output;
+            }
+
+            $argsPosts['include']   = $upsells;
+            $argsPosts['exclude']   = array($productID);
+
+            $result .= '<div class="catalog-description container">';
+                $result .= '<h2>You may also like</h2>';
+            $result .= '</div>';
+
+        } else {
+            return $result;
+        }
+
+    }
+
+    if(isset($args['cross_sell']) && $args['cross_sell'] == true){
+        $result .= '<div class="catalog-description container">';
+            $result .= '<h2>You may also like</h2>';
+        $result .= '</div>';
+    }
+
+
     $spPosts = SP_Framework_Post_Type_Utility::get_list($argsPosts);
 
     if(count($spPosts)>0){

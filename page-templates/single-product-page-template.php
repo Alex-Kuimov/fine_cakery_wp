@@ -92,17 +92,11 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
 <?php echo sp_get_reviews($productID);?>
 
-<div class="catalog-description container">
-    <h2>You may also like</h2>
-</div>
-
 <?php
 $args = array(
-	'numberposts' 	=> 4, 
-	'product_cat' 	=> $catID, 
-	'pagination' 	=> false, 
-	'order' 		=> $order, 
-	'orderby' 		=> $orderby
+	'numberposts' => 4, 
+	'pagination' => false, 
+    'upsale' => true
 );
 
 echo sp_get_catalog_items($args, $tagsArray);

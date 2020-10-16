@@ -1574,3 +1574,11 @@ ul.payment_methods li::before {
 .cn-button.bootstrap{
     background: #55403b!important;
 }
+
+.cart-collaterals{
+    margin-top: 30px;
+}
+
+.cart-collaterals .catalog__tags{
+    display: block;
+}
