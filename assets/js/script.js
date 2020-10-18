@@ -24,6 +24,9 @@ jQuery(document).ready(($) => {
 
             $('.close-modal').on('click', frontEnd.closeModal);
             $('.show-modal').on('click', frontEnd.showModal);
+
+            jQuery( window ).load(function(){frontEnd.stickyFooter()});
+            jQuery( window ).resize(function(){frontEnd.stickyFooter()});
         },
 
         sliders: function() {
@@ -89,6 +92,26 @@ jQuery(document).ready(($) => {
                 $('.stiky-menu').fadeIn(400);
             } else {
                 $('.stiky-menu').fadeOut(400);
+            }
+        },
+
+        stickyFooter: function(){
+            let header  = jQuery( 'header' ),
+                footer  = jQuery( 'footer' ),
+                content = jQuery( '.content-auto-height' );
+
+            content.css( 'min-height', '1px' );
+            
+            let headerHeight  = header.outerHeight(),
+                footerHeight  = footer.outerHeight(),
+                contentHeight = content.outerHeight(),
+                windowHeight  = jQuery( window ).height(),
+                totalHeight   = headerHeight + footerHeight + contentHeight;
+            
+            if (totalHeight < windowHeight) {
+                content.css( 'min-height', windowHeight - headerHeight - footerHeight );
+            } else {
+                content.css( 'min-height','1px' );
             }
         },
 

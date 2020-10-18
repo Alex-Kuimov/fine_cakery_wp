@@ -200,7 +200,7 @@ function sp_get_footer_info($result=null){
 }
 
 function sp_get_breadcrumbs($result=null){
-    if(!is_front_page()){
+    if(!is_front_page() && !is_404()){
         
         $postID 	= get_the_ID();
         $postType 	= get_post_type($postID);
@@ -558,26 +558,29 @@ function sp_get_section_contact($result=null){
 
 function sp_get_section_instagram($result=null){
 
-    $title = get_theme_mod('sp_instagram_title');
-    $name = get_theme_mod('sp_instagram_name');
+    if(!is_404()){
 
-    $result .= '<section class="instagram container">';
-        
-        if($title){
-            $result .= '<h2>'.$title.'</h2>';
-        }
+        $title = get_theme_mod('sp_instagram_title');
+        $name = get_theme_mod('sp_instagram_name');
 
-        if($name){
-            $result .= '<p>'.$name.'</p>';
-        }    
+        $result .= '<section class="instagram container">';
+            
+            if($title){
+                $result .= '<h2>'.$title.'</h2>';
+            }
 
-        $result .= '<div class="instagram-wrap">';
+            if($name){
+                $result .= '<p>'.$name.'</p>';
+            }    
 
-            $result .= do_shortcode('[instagram-feed num=6 cols=1]');
+            $result .= '<div class="instagram-wrap">';
 
-        $result .= '</div>';
+                $result .= do_shortcode('[instagram-feed num=6 cols=1]');
 
-    $result .= '</section>';
+            $result .= '</div>';
+
+        $result .= '</section>';
+    }    
 
     return $result;
 }

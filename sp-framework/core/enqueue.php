@@ -17,7 +17,7 @@ $args = array(
             'path' 	=> '/assets/css/fancybox.css',
         ),
         array(
-            'name'  => 'fonts',
+            'name'  => 'jquery-ui',
             'path'  => '/assets/css/jquery-ui.css',
         ),
         array(
