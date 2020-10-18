@@ -500,6 +500,7 @@
     font-family: 'Optimum', sans-serif;
 }
 
+
 /*
 * Catalog Pagination
 */
@@ -685,6 +686,7 @@
     height: 25px!important;
 }
 
+
 /*
 * Reviews
 */
@@ -734,6 +736,7 @@
     font-size: 16px;
     margin: 15px 0px;
 }
+
 
 /*
 * Floating Cart
@@ -1572,6 +1575,24 @@ ul.payment_methods li::before {
     margin-top: 5px;
 }
 
+.optional{
+    display: none;
+}
+
+.woocommerce table.shop_table td{
+    font-size: 16px;
+}
+
+.woocommerce-customer-details,
+.woocommerce-order-details{
+    display: none;
+}
+
+.woocommerce ul.order_details{
+    margin: 0px!important;
+    padding: 0px;  
+}
+
 
 /*
 * woo select2
@@ -1641,6 +1662,6 @@ ul.payment_methods li::before {
     margin-top: 30px;
 }
 
-.cart-collaterals .catalog__tags{
-    display: block;
+.cart-collaterals .catalog__tags span{
+    padding: 0px 10px;
 }

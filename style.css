@@ -322,7 +322,7 @@ textarea {
 }
 
 .catalog-title {
-    font-size: 40px;
+    font-size: 34px;
     text-transform: uppercase;
     font-weight: normal;
 }
@@ -343,8 +343,11 @@ textarea {
     margin-bottom: 20px;
 }
 
-.catalog-description h2 {
+.catalog-description h2,
+.cart-collaterals .catalog-description h2{
     margin-top: 0px;
+    font-size: 34px;
+    font-family: 'Optimum', sans-serif;
 }
 
 .catalog-description p {
