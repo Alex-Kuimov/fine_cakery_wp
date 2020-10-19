@@ -45,6 +45,20 @@ jQuery(document).ready(($) => {
             });
 
 
+            var forPartnersSlider= new Swiper('.for-partners-slider', {
+                loop: false,
+
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+
             var productPageSliderThumbs = new Swiper('.product-slider-thumbs', {
                 direction: 'vertical',
                 slidesPerView: 4,
