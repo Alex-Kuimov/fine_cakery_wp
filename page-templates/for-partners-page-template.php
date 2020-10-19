@@ -73,6 +73,8 @@ get_header();
 		</label>
 	</form>
 
+	<?php echo do_shortcode('[addtoany]');?>
+
 </div>	
 
 
