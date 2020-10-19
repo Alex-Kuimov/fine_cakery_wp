@@ -251,6 +251,9 @@
 * Page inner
 */
 
+.page-inner{
+    width: 900px;
+}
 
 .page-inner__title {
     font-family: 'Optimum', sans-serif;
@@ -261,7 +264,14 @@
 }
 
 .page-inner img {
-    width: 600px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px; 
+}
+
+.page-inner figure{
+    margin: 0px;
+    padding: 0px;
 }
 
 .page-inner__content {
@@ -308,6 +318,81 @@
 }
 
 .blog-inner .addtoany_shortcode{
+    margin-top: 40px;
+}
+
+
+.our-mission{
+    background: #F8F5F2;
+    padding: 30px 50px;
+    margin: 60px 0;
+}
+
+.our-mission h2{
+    text-align: center;
+}
+
+.vision{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0;
+}
+
+.vision h2{
+    margin-right: 20px;
+}
+
+.line{
+    width: 200px;
+    background: #f4f0ee;
+    height: 2px;
+    margin-right: 20px
+}
+
+.our-values-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+
+.our-values h2{
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 80px;
+}
+  
+.our-values h3{
+   font-size: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.our-values h3:after{
+    content: '';
+    background: #f4f0ee;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+}
+
+.our-values p{
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.our-values__item{
+    width: 400px;
+    margin-right: 50px;
+    margin-bottom: 40px;
+}
+
+.page-inner .addtoany_shortcode{
     margin-top: 40px;
 }
 
