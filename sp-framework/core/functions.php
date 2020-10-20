@@ -127,6 +127,26 @@ function sp_get_contacts($type=null, $result=null){
         $result .= '</div>';
     }
 
+    if($type=='partners'){
+
+        $result .= '<div class="for-partners-contact__text">';
+            
+            if($phone){
+                $result .= '<p><i class="fas fa-phone-alt"></i> '.$phone.'</p>';
+            }
+
+            if($email){
+                $result .= '<p><i class="fas fa-envelope"></i> '.$email.'</p>';
+            }
+
+            if($address){
+                $result .= '<p><i class="fas fa-map-marker-alt"></i> '.$address.'</p>';
+            }
+
+        $result .= '</div>';
+
+    }
+
     if($type=='footer'){
 
         $result .= '<div class="footer-contacts">';
@@ -308,7 +328,7 @@ function sp_get_gallery($postID=null, $result=null){
 
 
 /*
-* Front Page Section
+* Front Page
 */
 
 
@@ -662,6 +682,68 @@ function sp_get_posts($result=null){
     $result .= $spPagination;
     
     return $result;
+}
+
+
+/*
+* For Partners
+*/
+
+
+function sp_get_partners_slider($result=null){
+    $args = array(
+        'post_type'     =>  'sp_partners_slider',
+        'order'         =>  'asc',
+    );
+                    
+    $spPosts = SP_Framework_Post_Type_Utility::get_list($args);
+
+    if(count($spPosts)>0){
+
+        $result .= '<div class="for-partners for-partners-slider-wrap">';
+
+            $result .= '<div class="swiper-container for-partners-slider">';
+                $result .= '<div class="swiper-wrapper">';
+
+                foreach ($spPosts as $spPost) {
+
+                    $postID = $spPost['id'];
+                    $title = $spPost['title']; 
+                    $image = SP_Framework_Post_Type_Utility::get_image($postID, 'full');
+                   
+                    $result .= '<div class="swiper-slide">';
+                        $result .= '<img src="'.$image.'" alt="image: '.$title.'">';
+                        $result .= '<p>'.$title.'</p>';
+                    $result .= '</div>';
+
+                }
+
+                $result .= '</div>';
+                
+                $result .= '<div class="swiper-button-next swiper-button-black"></div>';
+                $result .= '<div class="swiper-button-prev swiper-button-black"></div>';
+
+                $result .= '<div class="swiper-pagination"></div>';
+            $result .= '</div>';
+
+        $result .= '</div>';    
+
+    }    
+
+    return  $result;
+}
+
+function sp_get_partners_contact($result=null){
+
+    $result .= '<div class="for-partners for-partners-contact">';
+        $result .= '<p>You can contact us directly or fill the form below and we will get back to you shortly.</p>';
+
+        $result .= sp_get_contacts('partners');
+
+    $result .= '</div>';
+
+    return  $result;
+
 }
 
 
