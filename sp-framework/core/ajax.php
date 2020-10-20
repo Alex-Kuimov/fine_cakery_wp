@@ -185,7 +185,7 @@ class Sp_Send_Partners_Form extends SP_Framework_AJAX {
 
 		SP_Framework_Mail::send($argsMail);
 
-		$mailTo = $postData['email'];
+		$mailTo = $postData['E-mail'];
 		$emailText = '';
 		$emailText .= '<p><strong>Thank you for your interest in our desserts!</strong></p>';
 		$emailText .= '<p>It would be our biggest pleasure to collaborate with you and provide our nutritious desserts to your dear customers.</p>';
