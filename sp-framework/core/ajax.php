@@ -186,19 +186,16 @@ class Sp_Send_Partners_Form extends SP_Framework_AJAX {
 		SP_Framework_Mail::send($argsMail);
 
 		$mailTo = $postData['E-mail'];
-		$emailText = '';
-		$emailText .= '<p><strong>Thank you for your interest in our desserts!</strong></p>';
-		$emailText .= '<p>It would be our biggest pleasure to collaborate with you and provide our nutritious desserts to your dear customers.</p>';
-		$emailText .= '<p>Please note that all the sweets on this page are vegan, gluten-free and do not contain any refined ingredients. We use only wholesome products to create delicious treats that nourish both, body and soul.</p>';
-		$emailText .= '<p><strong>With lots of care and love,</strong><br>'; 
-		$emailText .= 'Alisa Gilly & Co</p>';
-
+		$emailText = get_theme_mod('notification_text');
+		$file = get_theme_mod('notification_file');
+		
 		$argsMail = array(
 			'email_to' 		=> $mailTo,
 			'email_from' 	=> $mailFrom,
 			'from'			=> 'The Fine Cakery',
 			'subject' 		=> 'The Fine Cakery',
 			'message'		=> $emailText,
+			'attachments'   => $file,
 		);	
 
 		SP_Framework_Mail::send($argsMail);

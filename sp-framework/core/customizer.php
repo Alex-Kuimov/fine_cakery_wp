@@ -156,17 +156,27 @@ $args = array(
         'notification_block' => array(
             'name'  => 'notification_block',
             'title' => 'Notification',
-            'fields' => array(
-                'notification_email' => array(
-                    'name' => 'notification_email',
-                    'type' => 'input', 
-                    'label' => 'Notification E-mail',
-                ), 
+            'fields' => array( 
                 'sender_email' => array(
                     'name' => 'sender_email',
                     'type' => 'input', 
                     'label' => 'Sender E-mail',
                 ), 
+                'notification_email' => array(
+                    'name' => 'notification_email',
+                    'type' => 'input', 
+                    'label' => 'Notification E-mail',
+                ),
+                'notification_text' => array(
+                    'name' => 'notification_text',
+                    'type' => 'textarea', 
+                    'label' => 'Notification Text',
+                ),
+                'notification_file' => array(
+                    'name' => 'notification_file',
+                    'type' => 'input', 
+                    'label' => 'Notification file',
+                ),
             ),
         ),
     ),
