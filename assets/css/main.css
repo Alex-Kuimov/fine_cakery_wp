@@ -98,7 +98,7 @@
 */
 
 
-.blog {
+.blog-container {
     background: #F8F5F2;
     text-align: center;
 }
@@ -1341,7 +1341,6 @@
     padding: 20px;
     line-height: 1.5em;
     text-transform: uppercase;
-
 }
 
 .woocommerce table.shop_table .product-subtotal {
@@ -1354,7 +1353,6 @@
     padding: 0 15px;
     font-size: 16px;
     line-height: 55px;
-
 }
 
 .woocommerce .coupon button.button {
@@ -1847,6 +1845,9 @@ ul.payment_methods li::before {
     padding: 0px;  
 }
 
+.about_paypal{
+    display: none;
+}
 
 /*
 * woo select2

@@ -15,7 +15,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 
 	<div class="mobile-menu">
         <img src="<?php echo esc_url(get_template_directory_uri())?>/assets/img/menu.svg" class="show-menu">

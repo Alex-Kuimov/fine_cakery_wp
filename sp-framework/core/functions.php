@@ -444,7 +444,7 @@ function sp_get_section_blog($result=null){
 
     $title = get_theme_mod('sp_blog_title');
 
-    $result .= '<section class="blog">';
+    $result .= '<section class="blog-container">';
         
         if($title){
             $result .= '<h2>'.$title.'</h2>';
@@ -613,7 +613,7 @@ function sp_get_posts($result=null){
     $postsPerPage = get_option('posts_per_page');
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 0;
 
-    $result .= ' <section class="blog blog-list container">';
+    $result .= ' <section class="blog-container blog-list container">';
             
         $result .= '<h2>'.get_the_title($pagePostsID).'</h2>';
         $result .= '<p>'.$text.'</p>';
