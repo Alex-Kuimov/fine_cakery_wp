@@ -20,7 +20,6 @@ get_header();
 
     <?php echo do_shortcode('[addtoany]');?>
 
-
     </div>
 </div>
 

@@ -159,6 +159,56 @@ class SP_Send_Contact_Form extends SP_Framework_AJAX {
 $spSendContactForm = new Sp_Send_Contact_Form('sp_send_contact_form');
 
 
+
+class Sp_Send_Partners_Form extends SP_Framework_AJAX {
+	function ajax_action() {
+		$postData = sanitize_text_field($_POST['data']);
+		$postData = stripslashes($postData);
+		$postData = json_decode($postData, true);
+
+		$mailTo = get_theme_mod('notification_email');
+		$mailFrom = get_theme_mod('sender_email');
+
+		foreach ($postData as $key => $value) {
+	    	$emailText .= '<strong>'.$key.'</strong>: '.$value.'<br>';
+	    }
+
+	    add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
+
+		$argsMail = array(
+			'email_to' 		=> $mailTo,
+			'email_from' 	=> $mailFrom,
+			'from'			=> 'The Fine Cakery',
+			'subject' 		=> 'Message from partners form',
+			'message'		=> $emailText,
+		);	
+
+		SP_Framework_Mail::send($argsMail);
+
+		$mailTo = $postData['email'];
+		$emailText = '';
+		$emailText .= '<p><strong>Thank you for your interest in our desserts!</strong></p>';
+		$emailText .= '<p>It would be our biggest pleasure to collaborate with you and provide our nutritious desserts to your dear customers.</p>';
+		$emailText .= '<p>Please note that all the sweets on this page are vegan, gluten-free and do not contain any refined ingredients. We use only wholesome products to create delicious treats that nourish both, body and soul.</p>';
+		$emailText .= '<p><strong>With lots of care and love,</strong><br>'; 
+		$emailText .= 'Alisa Gilly & Co</p>';
+
+		$argsMail = array(
+			'email_to' 		=> $mailTo,
+			'email_from' 	=> $mailFrom,
+			'from'			=> 'The Fine Cakery',
+			'subject' 		=> 'The Fine Cakery',
+			'message'		=> $emailText,
+		);	
+
+		SP_Framework_Mail::send($argsMail);
+
+		wp_die();
+	}
+}
+$spSendPartnersForm = new Sp_Send_Partners_Form('sp_send_partners_form');
+
+
 class SP_Send_Review extends SP_Framework_AJAX {
 	function ajax_action() {
 		$productID = sanitize_text_field($_POST['productID']);

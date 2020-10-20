@@ -183,6 +183,7 @@ jQuery(document).ready(($) => {
             $('body').on('click', '.add-to-cart', backEnd.addToCart);
             $('body').on('submit', '.contact-us__form', backEnd.sendForm);
             $('body').on('submit', '.review-form', backEnd.sendForm);
+            $('body').on('submit', '.partners-contact-form', backEnd.sendForm);
         },
 
         showVariant: function() {
@@ -339,6 +340,20 @@ jQuery(document).ready(($) => {
                 }, 500);
             } 
 
+            if(formID == 'partners-form'){
+                data = backEnd.getFormData('.partners-contact-form');
+                formData.append('action', 'sp_send_partners_form');
+
+                $('.modal__title').html('Message');
+                $('.modal-ajax-result').html('');
+
+                setTimeout(function () {
+                    $('.sp-form-field').val('');
+                    $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                    frontEnd.showModal();                      
+                }, 500);
+            }
+
             if(formID == 'review-form'){
                 let productID = $(this).attr('product-id');
 
@@ -353,8 +368,6 @@ jQuery(document).ready(($) => {
                     $('.sp-form-field').val('');
                     $('.modal-ajax-result').html('<p class="success">Review sent successfully!</p>');                   
                 }, 500);
-
-                console.log(productID);
             }   
 
             formData.append('data', JSON.stringify(data));
