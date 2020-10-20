@@ -189,6 +189,11 @@ class Sp_Send_Partners_Form extends SP_Framework_AJAX {
 		$emailText = get_theme_mod('notification_text');
 		$file = get_theme_mod('notification_file');
 		
+		$contDir = WP_CONTENT_DIR;
+		$homeUrl = get_home_url.'/wp-content';
+
+		$file = str_replace($homeUrl, $contDir , $file);
+
 		$argsMail = array(
 			'email_to' 		=> $mailTo,
 			'email_from' 	=> $mailFrom,
