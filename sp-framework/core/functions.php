@@ -730,11 +730,10 @@ function sp_get_partners_slider($result=null){
 
     }    
 
-    return  $result;
+    return $result;
 }
 
 function sp_get_partners_contact($result=null){
-
     $result .= '<div class="for-partners for-partners-contact">';
         $result .= '<p>You can contact us directly or fill the form below and we will get back to you shortly.</p>';
 
@@ -742,8 +741,54 @@ function sp_get_partners_contact($result=null){
 
     $result .= '</div>';
 
-    return  $result;
+    return $result;
+}
 
+
+/*
+* About
+*/
+
+
+function sp_get_our_values($result=null){
+    $args = array(
+        'post_type'     =>  'sp_our_values',
+        'order'         =>  'desc',
+    );
+                    
+    $spPosts = SP_Framework_Post_Type_Utility::get_list($args);
+
+    if(count($spPosts)>0){
+
+
+        $result .= '<div class="our-values">';
+            $result .= '<h2>Our values</h2>';
+
+            $result .= '<div class="our-values-wrap">';
+
+                foreach ($spPosts as $spPost) {
+
+                    $postID = $spPost['id'];
+                    $title = $spPost['title']; 
+                    $content = SP_Framework_Post_Type_Utility::get_content($postID);
+
+                    $result .= '<div class="our-values__item">';
+                        $result .= '<h3>'.$title.'</h3>';
+
+                        if($content){
+                            $result .= '<p>'.$content.'</p>';
+                        }    
+
+                    $result .= '</div>';
+                }    
+                
+            $result .= '</div>';
+
+        $result .= '</div>  ';
+
+    }    
+
+    return $result;
 }
 
 

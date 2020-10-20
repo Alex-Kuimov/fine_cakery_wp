@@ -46,7 +46,7 @@ $args = array(
 	'not_found' 			=> 'Not found',
 	'not_found_in_trash' 	=> 'Not found in trash',
 	'menu_icon'				=> 'dashicons-format-image',
-	'supports' 				=> array('title', 'thumbnail', 'editor'),
+	'supports' 				=> array('title', 'thumbnail',),
 	'hidden' 				=> 'y',
 );
 $spForPartnersSlider->create($args);
@@ -74,3 +74,23 @@ $args = array(
 $spProductTags->create($args);
 
 
+$spOurValues = new SP_Framework_Post_Type();
+$args = array(
+	'name' 					=> 'sp_our_values',
+	'slug' 					=> 'sp_our_values',
+	'label' 				=> 'Our values',
+	'all_items' 			=> 'All',
+	'add_new' 				=> 'Add',
+	'add_new_item' 			=> 'Add',
+	'edit_item' 			=> 'Edit',
+	'new_item' 				=> 'New',
+	'view_item' 			=> 'View',
+	'view_items' 			=> 'View',
+	'search_items' 			=> 'Search',
+	'not_found' 			=> 'Not found',
+	'not_found_in_trash' 	=> 'Not found in trash',
+	'menu_icon'				=> 'dashicons-art',
+	'supports' 				=> array('title', 'editor'),
+	'hidden' 				=> 'y',
+);
+$spOurValues->create($args);
