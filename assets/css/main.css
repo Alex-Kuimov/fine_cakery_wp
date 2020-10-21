@@ -1326,7 +1326,7 @@
 
 .woocommerce table.shop_table td:last-of-type {
     border-right: 1px solid #f1f1f1;
-    border-top: none;
+    /*border-top: none;*/
 }
 
 .woocommerce table.shop_table td {
@@ -1344,6 +1344,8 @@
     padding: 20px;
     line-height: 1.5em;
     text-transform: uppercase;
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
 }
 
 .woocommerce table.shop_table .product-subtotal {
@@ -1461,7 +1463,7 @@
 }
 
 .woocommerce table.shop_table tbody th {
-
+    border-top: none!important;
 }
 
 .wc-proceed-to-checkout {
