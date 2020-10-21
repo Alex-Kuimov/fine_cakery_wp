@@ -1137,6 +1137,9 @@
     .page-inner, .for-partners{
         width: 280px;
     }
+    .modal{
+        width: 330px;
+    }
     h1,
     h2,
     .blog-inner__title,
@@ -1293,6 +1296,36 @@
     .product__title{
         font-size: 24px;
     }
+    .modal .product__select-title{
+        font-size: 13px;
+    }
+    .modal .product__select{
+        width: 200px;
+        font-size: 14px;
+    }
+    .modal img {
+        width: 90px;
+        max-width: none;
+    }
+    .modal-product-wrap__item{
+        margin-right: 10px;
+    }
+    .modal .modal__body .product__button, 
+    .modal .modal__body .product__button:hover, 
+    .modal .modal__body .product__button-cancel, 
+    .modal .modal__body .product__button-cancel:hover {
+        width: 100px;
+        font-size: 12px;
+        min-width: unset;
+        height: 40px;
+        padding: 3px;
+        line-height: 35px;
+    }
+
+    .modal .catalog-price-old .catalog__currency, 
+    .modal .catalog-price-old .catalog__price{
+        font-size: 12px;
+    } 
 }
 
 @media screen and (max-width: 320px) {
