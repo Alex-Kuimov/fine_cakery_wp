@@ -196,6 +196,7 @@ select {
   background-position: 96% 50%!important;
   background-repeat: no-repeat!important;
   background-size: 12px!important;
+  border: 1px solid #E0E0E0;
 }
 
 input::-webkit-outer-spin-button,
