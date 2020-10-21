@@ -1228,18 +1228,21 @@
     margin-top: 40px;
 }
 
-.modal .product__button{
+.modal .modal__body .product__button,
+.modal .modal__body .product__button:hover{
     margin-left: 0px;
     margin-right: 20px;  
     border: 2px solid #55403b;
     width: 200px;
 }
 
-.modal .product__button-cancel{
+.modal .modal__body .product__button-cancel,
+.modal .modal__body .product__button-cancel:hover{
     background: #fff;
     border: 2px solid #55403b;
     width: 200px;
     color: #55403b;
+    margin-right: 20px;
 }
 
 .modal__header{

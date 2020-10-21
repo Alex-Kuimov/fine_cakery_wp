@@ -72,6 +72,11 @@ textarea {
     width: 1500px;
 }
 
+.woocommerce-cart .page-inner,
+.woocommerce-checkout .page-inner{
+    width: 1500px;
+}
+
 .button {
     background: #55403B;
     -webkit-appearance: none;

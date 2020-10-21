@@ -1,3 +1,6 @@
+@media screen and (max-width: 1920px) {
+}
+
 @media screen and (max-width: 1680px) {
     .slider .slider-wrap {
         width: 1300px;
@@ -725,8 +728,13 @@
 }
 
 @media screen and (max-width: 600px) {
-    .container {
+    .container,
+    .woocommerce-cart .page-inner,
+    .woocommerce-checkout .page-inner {
         width: 500px;
+    }
+    .page-inner, .for-partners{
+        width: 450px;
     }
     .header-logo {
         width: 180px;
@@ -799,12 +807,75 @@
         height: 100%;
         margin-bottom: 30px;
     }
+    .blog__item h3{
+        font-size: 22px;
+    }
     .blog-inner__image {
         width: 400px;
     }
     .gallery__item {
         width: 220px;
         height: 220px;
+    }
+    .sbi_photo_wrap a {
+        width: 235px;
+        height: 235px;
+    }
+    #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
+        width: 235px;
+        height: 235px;
+        margin-bottom: 10px!important;
+    }
+    .for-partners-slider, .for-partners-slider .swiper-slide {
+        width: 450px!important;
+    }
+    .for-partners-slider{
+        height: 380px;
+    }
+    .for-partners-slider .swiper-slide{
+        height: 300px;
+    }
+    .for-partners-text h1,
+    .our-values h2{
+        margin-bottom: 20px;
+    }
+    .for-partners-slider-wrap{
+        margin-bottom: 0px;
+    }
+    .for-partners-contact-form .addtoany_shortcode{
+        margin-top: 20px;
+    }
+    .for-partners-slider .swiper-button-next{
+        top: 43%;
+    }
+    .for-partners-slider .swiper-button-prev{
+        top: 43%;
+    }
+    .swiper-pagination-fraction, 
+    .swiper-pagination-custom, 
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: 20px;
+    }
+    .our-mission{
+        padding: 20px 25px;
+        margin: 40px 0;
+    }
+    .our-values__item{
+        width: 100%;
+    }
+    .page-inner img{
+        margin-bottom: 10px;
+    }
+    .modal .product__button-cancel,
+    .modal .product__button{
+        width: 160px;
+        margin-right: 20px!important;
+    }
+    .sp-form-field-chk-label{
+        font-size: 14px;
+    }
+    .partners-contact-form button{
+        width: 102%;
     }
 }
 
