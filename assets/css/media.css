@@ -1097,11 +1097,26 @@
     .sp-form-field-checkbox{
         margin-bottom: 0;
     }
+    .vision .line{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 375px) {
+    .container,
+    .woocommerce-cart .page-inner,
+    .woocommerce-checkout .page-inner {
+        width: 300px;
+    }
+    .page-inner, .for-partners{
+        width: 280px;
+    }
     h1,
-    h2 {
+    h2,
+    .blog-inner__title,
+    .page-inner__title,
+    .our-values h2,
+    .for-partners-text h1{
         font-size: 28px;
         margin: 25px;
         padding-top: 40px;
@@ -1125,9 +1140,6 @@
     .mobile-menu {
         top: 30px;
         left: 30px;
-    }
-    .container {
-        width: 300px;
     }
     .header-logo {
         width: 130px;
@@ -1157,9 +1169,6 @@
     .catalog__item img {
         height: 200px;
     }
-    .catalog__tags {
-        display: none;
-    }
     .catalog__title {
         font-size: 15px;
         line-height: 25px;
@@ -1188,6 +1197,75 @@
     }
     .blog-inner__image {
         width: 300px;
+    }
+    .sbi_photo_wrap a {
+        width: 130px;
+        height: 130px;
+    }
+    #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 10px!important;
+    }
+    .for-partners-slider, .for-partners-slider .swiper-slide {
+        width: 280px!important;
+    }
+    .for-partners-slider .swiper-slide{
+        height: 210px;
+    }
+    .for-partners-slider{
+        height: 290px;
+    }
+    .partners-contact-form input[type="text"] {
+        width: 85%;
+        height: 10px;
+        margin: 8px 0;
+    }
+    .partners-contact-form button{
+        height: 40px;
+    }
+    .for-partners-slider .swiper-button-next{
+        top: 40%;
+    }
+    .for-partners-slider .swiper-button-prev {
+        top: 40%;
+    }
+    .our-mission h2,
+    .vision h2{
+        font-size: 20px;
+        margin: 0px;
+    }
+    .our-mission{
+        text-align: center;
+    }
+    .vision {
+        display: flex;
+        margin-bottom: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .catalog__item .catalog__button{
+        padding: 3px 5px;
+        position: relative;
+        width: 67px;
+        margin-top: 10px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .catalog__tags{
+        display: none;
+    }
+    .catalog-description h2, 
+    .cart-collaterals 
+    .catalog-description h2{
+        font-size: 28px;
+        text-align: center;
+    }
+    .catalog__tags span {
+        padding: 5px 8px;
+    }
+    .product__title{
+        font-size: 24px;
     }
 }
 
