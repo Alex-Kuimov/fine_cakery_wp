@@ -246,6 +246,9 @@
         font-size: 14px;
         line-height: 24px;
     }
+    .modal .catalog__price{
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 1280px) {
@@ -736,6 +739,9 @@
     .page-inner, .for-partners{
         width: 450px;
     }
+    .modal{
+        width: 450px;
+    }
     .header-logo {
         width: 180px;
     }
@@ -877,6 +883,12 @@
     .partners-contact-form button{
         width: 102%;
     }
+    .modal .modal__body .product__button, 
+    .modal .modal__body .product__button:hover,
+    .modal .modal__body .product__button-cancel, 
+    .modal .modal__body .product__button-cancel:hover{
+        width: 145px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -886,6 +898,9 @@
         width: 400px;
     }
     .page-inner, .for-partners{
+        width: 380px;
+    }
+    .modal{
         width: 380px;
     }
     h1,
@@ -988,6 +1003,17 @@
     .catalog__item .catalog__button{
         padding: 1px 10px;
         font-size: 12px;
+    }
+    .modal .modal__body .product__button, 
+    .modal .modal__body .product__button:hover,
+    .modal .modal__body .product__button-cancel, 
+    .modal .modal__body .product__button-cancel:hover{
+        width: 130px;
+        font-size: 13px;
+        min-width: 130px;
+    }
+    .modal__title{
+        font-size: 21px;
     }
 }
 
