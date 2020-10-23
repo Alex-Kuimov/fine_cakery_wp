@@ -874,7 +874,7 @@ function sp_get_catalog_items($args, $tags, $result=null){
             $argsPosts['exclude']   = array($productID);
 
             $result .= '<div class="catalog-description container">';
-                $result .= '<h2>You may also like</h2>';
+                $result .= '<h2>'.__('You may also like', 'sp-theme').'</h2>';
             $result .= '</div>';
 
         } else {
