@@ -324,6 +324,7 @@ jQuery(document).ready(($) => {
         sendForm: function(){
             let formData = new FormData(), 
                 formID = $(this).attr('id'),
+                msg = $(this).attr('msg'),
                 data = {};
                 
             if(formID == 'contact-form'){
@@ -335,7 +336,7 @@ jQuery(document).ready(($) => {
 
                 setTimeout(function () {
                     $('.sp-form-field').val('');
-                    $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                    $('.modal-ajax-result').html('<p class="success">'+msg+'</p>');
                     frontEnd.showModal();                      
                 }, 500);
             } 
@@ -349,7 +350,7 @@ jQuery(document).ready(($) => {
 
                 setTimeout(function () {
                     $('.sp-form-field').val('');
-                    $('.modal-ajax-result').html('<p class="success">Email sent successfully!</p>');
+                    $('.modal-ajax-result').html('<p class="success">'+msg+'</p>');
                     frontEnd.showModal();                      
                 }, 500);
             }

@@ -31,14 +31,14 @@ function apply_custom_title_to_cart_item( $cart_object ) {
 add_action('woocommerce_before_calculate_totals', 'apply_custom_title_to_cart_item', 99);
 
 function sp_decl_of_num($num, $result=null) {
-    $result = 'Reviews';
+    $result = __('Reviews', 'sp-theme');
 
     if($num == 0){
-        $result = 'Review';
+        $result = __('Review', 'sp-theme');
     }
 
     if($num == 1){
-        $result = 'Review';   
+        $result = __('Review', 'sp-theme');   
     }
 
 
@@ -576,11 +576,11 @@ function sp_get_section_contact($result=null){
 
             $result .= sp_get_contacts('front');
 
-            $result .= '<form class="contact-us__item contact-us__form" id="contact-form">';
-                $result .= '<input type="text" class="sp-form-field" data-field="E-mail" placeholder="Your e-mail" required>';
-                $result .= '<input type="text" class="sp-form-field" data-field="Name" placeholder="Your name" required>';
-                $result .= '<textarea class="sp-form-field" data-field="Comment" placeholder="Your comment" required></textarea>';
-                $result .= '<button class="button">Send message</button>';
+            $result .= '<form class="contact-us__item contact-us__form" id="contact-form" msg="'.__('E-mail sent successfully!', 'sp-theme').'">';
+                $result .= '<input type="text" class="sp-form-field" data-field="E-mail" placeholder="'.__('Your e-mail', 'sp-theme').'" required>';
+                $result .= '<input type="text" class="sp-form-field" data-field="Name" placeholder="'.__('Your name', 'sp-theme').'" required>';
+                $result .= '<textarea class="sp-form-field" data-field="Comment" placeholder="'.__('Your comment', 'sp-theme').'" required></textarea>';
+                $result .= '<button class="button">'.__('Send message', 'sp-theme').'</button>';
             $result .= '</form>';
 
         $result .= '</div>';
@@ -747,9 +747,15 @@ function sp_get_partners_slider($result=null){
 }
 
 function sp_get_partners_contact($result=null){
-    $result .= '<div class="for-partners for-partners-contact">';
-        $result .= '<p>You can contact us directly or fill the form below and we will get back to you shortly.</p>';
 
+    $title = get_theme_mod('sp_partners_contact');  
+
+    $result .= '<div class="for-partners for-partners-contact">';
+        
+        if($title){
+            $result .= '<p>'.$title.'</p>';
+        }
+            
         $result .= sp_get_contacts('partners');
 
     $result .= '</div>';

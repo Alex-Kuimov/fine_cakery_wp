@@ -179,6 +179,27 @@ $args = array(
                 ),
             ),
         ),
+        'partners' => array(
+            'name'  => 'partners',
+            'title' => 'Partners',
+            'fields' => array(
+                'sp_partners_contact' => array(
+                    'name' => 'sp_partners_contact',
+                    'type' => 'input', 
+                    'label' => 'Title contact',
+                ),
+                'sp_partners_form_title' => array(
+                    'name' => 'sp_partners_form_title',
+                    'type' => 'input', 
+                    'label' => 'Form Title',
+                ),
+                'sp_partners_form_text' => array(
+                    'name' => 'sp_partners_form_text',
+                    'type' => 'textarea', 
+                    'label' => 'Form Text',
+                ),
+            ),
+        ),
     ),
 );
 

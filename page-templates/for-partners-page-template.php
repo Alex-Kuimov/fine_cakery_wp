@@ -20,20 +20,34 @@ get_header();
 <?php echo sp_get_partners_contact();?>
 
 <div class="for-partners for-partners-contact-form">
-	<h2>Become a partner</h2>
-	<p>To learn more about the ingredients, prices and delivery conditions please fill the form below. We will contact you immediately and share all the details.</p>
 
-	<form class="partners-contact-form" id="partners-form">
+	<?php
+
+	$title = get_theme_mod('sp_partners_form_title');
+	$text = get_theme_mod('sp_partners_form_text');  
+
+	
+	if($title){
+		echo '<h2>'.$title.'</h2>';
+	}
+	
+	if($text){
+		echo '<p>'.$text.'</p>';
+	}
+
+	?>
+
+	<form class="partners-contact-form" id="partners-form" msg="<?php echo __('E-mail sent successfully!', 'sp-theme')?>">
 		
 		<div class="partners-form-wrap">
-			<input type="text" class="sp-form-field" data-field="Name" placeholder="Your name" required="">
-			<input type="text" class="sp-form-field" data-field="Company" placeholder="Company name" required="">
-			<input type="text" class="sp-form-field" data-field="E-mail" placeholder="E-mail" required="">
-			<button class="button">Get catalogue</button>
+			<input type="text" class="sp-form-field" data-field="Name" placeholder="<?php echo __('Your name', 'sp-theme')?>" required="">
+			<input type="text" class="sp-form-field" data-field="Company" placeholder="<?php echo __('Company name', 'sp-theme')?>" required="">
+			<input type="text" class="sp-form-field" data-field="E-mail" placeholder="<?php echo __('E-mail', 'sp-theme')?>" required="">
+			<button class="button"><?php echo __('Get catalogue', 'sp-theme')?></button>
 		</div>
 			
 		<label for="sp-form-field-chk" class="sp-form-field-chk-label">
-			<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required=""> By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service
+			<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required=""> <?php echo __('By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service', 'sp-theme')?>
 		</label>
 	</form>
 

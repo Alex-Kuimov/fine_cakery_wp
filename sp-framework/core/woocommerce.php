@@ -12,25 +12,24 @@ function sp_add_checkout_privacy_policy() {
        'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
        'required'      => true,
        'default'       => 1,
-       'label'         => 'I have read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>',
+       'label'         => __( 'I have read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>', 'sp-theme'),
     )); 
 }
        
 function sp_not_approved_privacy() {
     if ( ! (int) isset( $_POST['privacy_policy'] ) ) {
-        wc_add_notice( __( 'You have not read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>' ), 'error' );
+        wc_add_notice( __( 'You have not read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>', 'sp-theme'), 'error' );
     }
 }
-
 
 add_action('woocommerce_review_order_before_submit', 'sp_add_checkout_privacy_policy', 9);
 add_action('woocommerce_checkout_process', 'sp_not_approved_privacy');
 
 
-
 /*
 * DatePicker Checkout
 */
+
 
 // Register main datepicker jQuery plugin script
 add_action( 'wp_enqueue_scripts', 'enabling_date_picker' );
@@ -66,8 +65,8 @@ function sp_datepicker_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'id'            => 'datepicker',
         'required'      => false,
-        'label'         => __('Delivery Date'),
-        'placeholder'       => __('Select Date'),
+        'label'         => __('Delivery Date', 'sp-theme'),
+        'placeholder'       => __('Select Date', 'sp-theme'),
         'options'     =>   $mydateoptions
         ),
     $checkout->get_value( 'cylinder_collect_date' ));
