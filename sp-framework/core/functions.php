@@ -412,7 +412,7 @@ function sp_get_section_favorite($result=null){
     $result .= '<section class="favorite">';
 
         if($title){
-            $result .= '<h2>'.__($title, 'sp-theme').'</h2>';
+            $result .= '<h2>'.$title.'</h2>';
         }
 
         $result .= '<div class="favorite-wrap">';
@@ -460,7 +460,7 @@ function sp_get_section_blog($result=null){
     $result .= '<section class="blog-container">';
         
         if($title){
-            $result .= '<h2>'.__($title, 'sp-theme').'</h2>';
+            $result .= '<h2>'.$title.'</h2>';
         }
 
         $result .= '<div class="blog-wrap">';
@@ -537,13 +537,13 @@ function sp_get_section_about($result=null){
         $result .= '<div class="about__item about-text">';
             
             if($title){
-                $result .= '<h3>'.__($title, 'sp-theme').'</h3>';
+                $result .= '<h3>'.$title.'</h3>';
             }
 
             $result .= '<div class="about-text__line"></div>';
 
             if($text){    
-                $result .= '<p>'.__($text, 'sp-theme').'</p>';
+                $result .= '<p>'.$text.'</p>';
             }
             
             if($link){
@@ -565,11 +565,11 @@ function sp_get_section_contact($result=null){
     $result .= '<section class="contact-us container">';
 
         if($title){
-            $result .= '<h2>'.__($title, 'sp-theme').'</h2>';
+            $result .= '<h2>'.$title.'</h2>';
         }
 
         if($text){
-            $result .= '<p class="contact-us__subtitle">'.__($text, 'sp-theme').'</p>';
+            $result .= '<p class="contact-us__subtitle">'.$text.'</p>';
         }
 
         $result .= '<div class="contact-us-wrap">';
@@ -599,11 +599,11 @@ function sp_get_section_instagram($result=null){
         $result .= '<section class="instagram container">';
             
             if($title){
-                $result .= '<h2>'.__($title, 'sp-theme').'</h2>';
+                $result .= '<h2>'.$title.'</h2>';
             }
 
             if($name){
-                $result .= '<p>'.__($name, 'sp-theme').'</p>';
+                $result .= '<p>'.$name.'</p>';
             }    
 
             $result .= '<div class="instagram-wrap">';
@@ -629,11 +629,8 @@ function sp_get_posts($result=null){
     $result .= ' <section class="blog-container blog-list container">';
             
         $result .= '<h2>'.get_the_title($pagePostsID).'</h2>';
-        
-        if($text){
-            $result .= '<p>'.__($text, 'sp-theme').'</p>';
-        }
-            
+        $result .= '<p>'.$text.'</p>';
+
         $result .= '<div class="blog-wrap">';
         
             //get count of items
