@@ -196,8 +196,8 @@ function sp_get_header_info($result=null){
     $result .= '</div>';
 
     $result .= '<div class="header__item header-lang">';
-        $result .= '<a href="#" class="header-lang__link header-lang__link_active" title="EN">EN</a>';
-        $result .= '<a href="#" class="header-lang__link" title="DE">DE</a>';
+        $result .= '<a href="'.esc_url(get_home_url()).'" class="header-lang__link header-lang__link_active" title="EN">EN</a>';
+        $result .= '<a href="'.esc_url(get_home_url()).'?lang=de" class="header-lang__link" title="DE">DE</a>';
     $result .= '</div>';
 
     return $result;
