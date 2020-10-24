@@ -89,14 +89,19 @@ jQuery(document).ready(($) => {
 
         showImg: function() {
             let itemID = $(this).attr('id');
-            $('#' + itemID + ' .catalog__item-first-image').addClass('hide');
-            $('#' + itemID + ' .catalog__item-second-image').addClass('show');
+            if($('#' + itemID + ' .catalog__item-second-image').length > 0){
+                $('#' + itemID + ' .catalog__item-first-image').addClass('hide');
+                $('#' + itemID + ' .catalog__item-second-image').addClass('show');
+            }    
         },
 
         hideImg: function() {
             let itemID = $(this).attr('id');
-            $('#' + itemID + ' .catalog__item-first-image').removeClass('hide');
-            $('#' + itemID + ' .catalog__item-second-image').removeClass('show');
+
+            if($('#' + itemID + ' .catalog__item-second-image').length > 0){
+                $('#' + itemID + ' .catalog__item-first-image').removeClass('hide');
+                $('#' + itemID + ' .catalog__item-second-image').removeClass('show');
+            }    
         },
 
         stickyMenu: function() {

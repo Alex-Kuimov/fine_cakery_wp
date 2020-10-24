@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <div class="for-partners for-partners-text">
-	<h1>For Partners</h1>
+	<h1><?php echo get_the_title();?></h1>
 	<?php
     while ( have_posts() ) : the_post();
         the_content();
