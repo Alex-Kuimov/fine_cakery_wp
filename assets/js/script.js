@@ -92,7 +92,10 @@ jQuery(document).ready(($) => {
             if($('#' + itemID + ' .catalog__item-second-image').length > 0){
                 $('#' + itemID + ' .catalog__item-first-image').addClass('hide');
                 $('#' + itemID + ' .catalog__item-second-image').addClass('show');
-            }    
+            }  
+
+            $('#' + itemID + ' .catalog__button').addClass('catalog__button-hover');  
+            $('#' + itemID + ' .catalog__title').addClass('catalog__title-hover');  
         },
 
         hideImg: function() {
@@ -101,7 +104,10 @@ jQuery(document).ready(($) => {
             if($('#' + itemID + ' .catalog__item-second-image').length > 0){
                 $('#' + itemID + ' .catalog__item-first-image').removeClass('hide');
                 $('#' + itemID + ' .catalog__item-second-image').removeClass('show');
-            }    
+            }
+
+            $('#' + itemID + ' .catalog__button').removeClass('catalog__button-hover'); 
+            $('#' + itemID + ' .catalog__title').removeClass('catalog__title-hover');
         },
 
         stickyMenu: function() {

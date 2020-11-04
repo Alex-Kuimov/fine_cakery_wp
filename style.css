@@ -436,7 +436,7 @@ textarea {
 }
 
 .catalog__tag-item_gray {
-    background: #A5AEB4
+    background: #A5AEB4;
 }
 
 .catalog__title {
@@ -488,6 +488,15 @@ textarea {
     z-index: 2;
     margin: 0;
     font-family: 'Optimum', sans-serif;
+}
+
+.catalog__button-hover{
+    background: #825952;
+}
+
+.catalog__title-hover{
+    color:#825952;
+    text-decoration: underline;
 }
 
 
