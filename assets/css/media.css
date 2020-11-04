@@ -757,6 +757,7 @@
     .slider .swiper-button-prev,
     .slider .swiper-button-next {
         top: 51%;
+        display: none;
     }
     .slider .swiper-pagination-bullets {
         position: absolute;

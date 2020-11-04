@@ -406,11 +406,13 @@ textarea {
 }
 
 .catalog__tags span {
-    padding: 5px 10px;
+    padding: 6px 10px;
     color: #fff;
     font-size: 12px;
     margin: 3px;
     border-radius: 10px;
+    line-height: 10px;
+    font-family: 'Optimum', sans-serif;
 }
 
 .catalog__tag-item_main {
@@ -435,12 +437,13 @@ textarea {
 
 .catalog__title {
     color: #55403B;
-    font-size: 22px;
+    font-size: 26px;
+    font-family: 'Optimum', sans-serif;
 }
 
 .catalog-price-wrap{
     display: inline;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .catalog-price-old{

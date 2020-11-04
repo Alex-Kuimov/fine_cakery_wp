@@ -540,7 +540,7 @@ function sp_get_section_about($result=null){
                 $result .= '<h3>'.$title.'</h3>';
             }
 
-            $result .= '<div class="about-text__line"></div>';
+            //$result .= '<div class="about-text__line"></div>';
 
             if($text){    
                 $result .= '<p>'.$text.'</p>';

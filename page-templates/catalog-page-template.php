@@ -49,7 +49,7 @@ if($pageID == $shopPageID){
 }
 		
 $args = array(
-	'numberposts' 	=> 4, 
+	'numberposts' 	=> 16, 
 	'product_cat' 	=> $catID, 
 	'pagination' 	=> true, 
 	'order' 		=> $order, 
