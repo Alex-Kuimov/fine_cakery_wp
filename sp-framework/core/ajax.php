@@ -113,6 +113,10 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 
 		    	$result .= '</div>';
 
+				$result .= '<label for="sp-form-field-chk" class="sp-form-field-chk-label">';
+					$result .= '<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required="">  '.__('By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service', 'sp-theme').'';
+				$result .= '</label>';
+
 		    	$result .= '<div class="review-form-btn-wrap">';
 		            $result .= '<button class="button reviews__button">Send</button>';
 		        $result .= '</div>';

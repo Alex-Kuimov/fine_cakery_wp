@@ -825,6 +825,10 @@
     margin: 15px 0px;
 }
 
+.review-form .sp-form-field-chk-label{
+    margin-left: 0px;
+}
+
 
 /*
 * Floating Cart
