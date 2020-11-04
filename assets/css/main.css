@@ -1937,6 +1937,11 @@ ul.payment_methods li::before {
     padding: 0px 10px;
 }
 
+.woocommerce table.shop_table_responsive tr td::before, 
+.woocommerce-page table.shop_table_responsive tr td::before {
+    font-weight: bold;
+}
+
 
 /*
 * Custom Select

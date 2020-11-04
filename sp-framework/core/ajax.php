@@ -103,7 +103,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 
 
 	    if($dataModal == 'review'){
-	    	$result .= '<form class="review-form" id="review-form" product-id="'.$productID.'" msg="'.__('Review sent successfully!', 'sp-theme').'">';
+	    	$result .= '<form class="review-form" id="review-form" product-id="'.$productID.'" msg="'.__('Thank you for your feedback! It will be published shortly after checking.', 'sp-theme').'">';
 		    	$result .= '<div class="review-form-wrap">';
 		    		
 		    		$result .= '<input type="text" class="sp-form-field" data-field="email" placeholder="'.__('Your e-mail', 'sp-theme').'" required="">';

@@ -639,7 +639,7 @@
         width: 580px;
     }
     .page-inner, .for-partners{
-        width: 500px;
+        width: 580px;
     }
     .breadcrumbs {
         padding-bottom: 0px;
@@ -713,7 +713,7 @@
         height: 270px;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 500px!important;
+        width: 580px!important;
     }
     .for-partners-slider .swiper-slide{
         height: 370px;
@@ -747,7 +747,7 @@
         width: 500px;
     }
     .for-partners{
-        width: 450px;
+        width: 500px;
     }
     .modal{
         width: 450px;
@@ -847,7 +847,7 @@
         margin-bottom: 10px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 450px!important;
+        width: 500px!important;
     }
     .for-partners-slider{
         height: 380px;
@@ -916,7 +916,7 @@
         width: 400px;
     }
     .for-partners{
-        width: 380px;
+        width: 400px;
     }
     .modal{
         width: 380px;
@@ -1012,7 +1012,7 @@
         margin-left: 30px;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 380px!important;
+        width: 400px!important;
     }
     .for-partners-slider{
         height: 355px;
@@ -1059,6 +1059,9 @@
     .top-menu {
         padding-top: 20%;
     }
+    .footer__copyright{
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -1069,7 +1072,7 @@
         width: 350px;
     }
     .for-partners{
-        width: 320px;
+        width: 350px;
     }
     h1,
     h2,
@@ -1161,7 +1164,7 @@
         padding: 0px 5px;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 330px!important;
+        width: 350px!important;
     }
     .for-partners-slider{
         height: 320px;
@@ -1185,7 +1188,7 @@
         width: 300px;
     }
     .for-partners{
-        width: 280px;
+        width: 300px;
     }
     .modal{
         width: 330px;
@@ -1287,7 +1290,7 @@
         margin-bottom: 10px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 280px!important;
+        width: 300px!important;
     }
     .for-partners-slider .swiper-slide{
         height: 210px;
@@ -1395,7 +1398,7 @@
         width: 280px;
     }
     .for-partners{
-        width: 250px;
+        width: 280px;
     }
     .modal{
         width: 280px;
@@ -1427,7 +1430,7 @@
         width: 280px;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 250px!important;
+        width: 280px!important;
     }
     .for-partners-slider .swiper-slide{
         height: 180px;

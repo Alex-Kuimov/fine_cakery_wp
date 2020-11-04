@@ -505,7 +505,7 @@ jQuery(document).ready(($) => {
 
                 setTimeout(function () {
                     $('.sp-form-field').val('');
-                    $('.modal-ajax-result').html('<p class="success">Review sent successfully!</p>');                   
+                    $('.modal-ajax-result').html('<p class="success">'+msg+'</p>');                   
                 }, 500);
             }   
 
@@ -525,7 +525,6 @@ jQuery(document).ready(($) => {
             });
 
             return false;
-
         },
 
         init: function() {
