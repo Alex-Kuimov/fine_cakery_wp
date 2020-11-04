@@ -472,6 +472,9 @@
     text-decoration: underline;
 }
 
+.about-page img{
+    margin-top: 30px;
+}
 
 /*
 * Contact
@@ -536,6 +539,10 @@
     margin-top: 20px;
 }
 
+
+.contact-us__form .sp-form-field-chk-label{
+    margin-left: 0px;
+}
 
 /*
 * Instagram
@@ -787,7 +794,7 @@
 
 .review-form-wrap input,
 .review-form-wrap textarea{
-    width: 100%;
+    width: 93%;
 }
 
 .review-form-btn-wrap{

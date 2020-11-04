@@ -580,6 +580,9 @@ function sp_get_section_contact($result=null){
                 $result .= '<input type="text" class="sp-form-field" data-field="E-mail" placeholder="'.__('Your e-mail', 'sp-theme').'" required>';
                 $result .= '<input type="text" class="sp-form-field" data-field="Name" placeholder="'.__('Your name', 'sp-theme').'" required>';
                 $result .= '<textarea class="sp-form-field" data-field="Comment" placeholder="'.__('Your comment', 'sp-theme').'" required></textarea>';
+                $result .= '<label for="sp-form-field-chk" class="sp-form-field-chk-label">';
+                    $result .= '<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required="">  '.__('By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service', 'sp-theme').'';
+                $result .= '</label>';
                 $result .= '<button class="button">'.__('Send message', 'sp-theme').'</button>';
             $result .= '</form>';
 

@@ -612,6 +612,7 @@
         text-align: center;
         display: flex;
         flex-direction: column;
+        margin-bottom: 20px;
     }
     .partners-contact-form input[type="text"]{
         width: 94%;
@@ -742,10 +743,11 @@
 @media screen and (max-width: 600px) {
     .container,
     .woocommerce-cart .page-inner,
-    .woocommerce-checkout .page-inner {
+    .woocommerce-checkout .page-inner,
+    .page-inner {
         width: 500px;
     }
-    .page-inner, .for-partners{
+    .for-partners{
         width: 450px;
     }
     .modal{
@@ -910,10 +912,11 @@
 @media screen and (max-width: 480px) {
     .container,
     .woocommerce-cart .page-inner,
-    .woocommerce-checkout .page-inner {
+    .woocommerce-checkout .page-inner,
+    .page-inner {
         width: 400px;
     }
-    .page-inner, .for-partners{
+    .for-partners{
         width: 380px;
     }
     .modal{
@@ -934,7 +937,12 @@
         font-size: 32px;
     }
     .contact-us__subtitle {
-        font-size: 18px;
+        font-size: 14px;
+        line-height: 28px;
+        margin-bottom: 15px;
+    }
+    .contact-us__item{
+        margin-bottom: 15px;
     }
     p {
         font-size: 14px;
@@ -1034,15 +1042,31 @@
     .modal__title{
         font-size: 21px;
     }
+    .about .about-text{
+        padding-top: 30px;
+    }
+    .about .about-text a{
+        padding-bottom: 0px;
+    }
+    .instagram h2{
+        padding-top: 30px;
+    }
+    .review-form-wrap input, .review-form-wrap textarea{
+        width: 90%;
+    }
+    .reviews h2{
+        padding-top: 70px;
+    }
 }
 
 @media screen and (max-width: 414px) {
     .container,
     .woocommerce-cart .page-inner,
-    .woocommerce-checkout .page-inner {
+    .woocommerce-checkout .page-inner,
+    .page-inner {
         width: 350px;
     }
-    .page-inner, .for-partners{
+    .for-partners{
         width: 320px;
     }
     h1,
@@ -1154,10 +1178,11 @@
 @media screen and (max-width: 375px) {
     .container,
     .woocommerce-cart .page-inner,
-    .woocommerce-checkout .page-inner {
+    .woocommerce-checkout .page-inner,
+    .page-inner {
         width: 300px;
     }
-    .page-inner, .for-partners{
+    .for-partners{
         width: 280px;
     }
     .modal{
@@ -1355,15 +1380,19 @@
     .gallery__item img{
         height: 130px;   
     }
+    .review-form-wrap input, .review-form-wrap textarea{
+        width: 86%;
+    }
 }
 
 @media screen and (max-width: 320px) {
     .container,
     .woocommerce-cart .page-inner,
-    .woocommerce-checkout .page-inner {
+    .woocommerce-checkout .page-inner,
+    .page-inner {
         width: 280px;
     }
-    .page-inner, .for-partners{
+    .for-partners{
         width: 250px;
     }
     .modal{
@@ -1414,5 +1443,8 @@
         height: 40px;
         padding: 3px;
         line-height: 32px;
+    }
+    .review-form-wrap input, .review-form-wrap textarea{
+        width: 83%;
     }
 }
