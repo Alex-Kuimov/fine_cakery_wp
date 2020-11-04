@@ -1065,7 +1065,11 @@ function sp_get_additional_product($productID, $result=null){
     $lists = explode('|', $list);
 
     if($list){
-        $result .= '<p class="product__select-title">Choose the flavour:</p>';
+        
+        if($title){
+            $result .= '<p class="product__select-title">'.$title.'</p>';
+        }
+        
         $result .= '<select class="product__select select" id="product__additional-'.$productID.'" data-class="product__additional">';
 
             foreach ($lists as $list) {

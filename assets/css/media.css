@@ -737,6 +737,19 @@
     .top-menu {
         padding-top: 12%;
     }
+    .woocommerce a.remove{
+        text-align: left;
+        margin: 0px;
+    }
+
+    .woocommerce table.shop_table tbody .product-remove {
+        border-right: 1px solid #f1f1f1;
+    }     
+
+    .woocommerce table.shop_table td{
+        border-left: 1px solid #f1f1f1;
+        border-right: 1px solid #f1f1f1;
+    }
 }
 
 @media screen and (max-width: 600px) {
