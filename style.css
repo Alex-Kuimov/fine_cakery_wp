@@ -405,14 +405,18 @@ textarea {
     font-family: sans-serif;
 }
 
+.catalog .catalog__tags{
+    margin-top: 12px;
+}
+
 .catalog__tags span {
     padding: 6px 10px;
     color: #fff;
-    font-size: 12px;
-    margin: 3px;
+    font-size: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     border-radius: 10px;
-    line-height: 10px;
-    font-family: 'Optimum', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .catalog__tag-item_main {
@@ -437,12 +441,17 @@ textarea {
 
 .catalog__title {
     color: #55403B;
+    margin: 12px 0;
     font-size: 26px;
     font-family: 'Optimum', sans-serif;
 }
 
 .catalog-price-wrap{
     display: inline;
+    margin-right: 10px;
+}
+
+.product .catalog-price-wrap{
     margin-right: 30px;
 }
 
