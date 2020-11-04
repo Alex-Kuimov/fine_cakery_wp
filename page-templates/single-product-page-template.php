@@ -77,7 +77,7 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
             </button>
 
             <div class="go-to-cart-wrap">
-                <a class="go-to-cart" href="<?php echo $cartUrl;?>">Go to Cart →</a>
+                <a class="go-to-cart" href="<?php echo $cartUrl;?>"><?php echo __('Go to Cart', 'sp-theme')?> →</a>
             </div>    
         </div>
 

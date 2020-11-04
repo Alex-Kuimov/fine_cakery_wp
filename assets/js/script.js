@@ -179,9 +179,71 @@ jQuery(document).ready(($) => {
             return false;
         },
 
+        select: function(){
+            $('.select').each(function() {
+                const _this = $(this),
+                    selectOption = _this.find('option'),
+                    selectID = _this.attr('id'),
+                    selectClass = $(this).attr('data-class'),
+                    selectOptionLength = selectOption.length,
+                    selectedOption = selectOption.filter(':selected'),
+                    duration = 450; // длительность анимации 
+
+                _this.hide();
+                _this.wrap('<div class="select"></div>');
+                $('<div>', {
+                    class: 'new-select '+ selectID,
+                    text: _this.children('option:first').text()
+                }).insertAfter(_this);
+
+                const selectHead = _this.next('.new-select');
+                $('<div>', {
+                    class: 'new-select__list'
+                }).insertAfter(selectHead);
+
+                const selectList = selectHead.next('.new-select__list');
+                for (let i = 0; i < selectOptionLength; i++) {
+                    $('<div>', {
+                        class: 'new-select__item '+selectClass,
+                        html: $('<span>', {
+                            text: selectOption.eq(i).text()
+                        })
+                    })
+                    .attr('data-value', selectOption.eq(i).val())
+                    .attr('data-product-id', $(this).attr('data-product-id'))
+                    .appendTo(selectList);
+                }
+
+                const selectItem = selectList.find('.new-select__item');
+                selectList.slideUp(0);
+                selectHead.on('click', function() {
+                    if ( !$(this).hasClass('on') ) {
+                        $(this).addClass('on');
+                        selectList.slideDown(duration);
+
+                        selectItem.on('click', function() {
+                            let chooseItem = $(this).data('value');
+
+                            $('select').val(chooseItem).attr('selected', 'selected');
+                            selectHead.text( $(this).find('span').text() );
+
+                            selectList.slideUp(duration);
+                            selectHead.removeClass('on');
+
+                        });
+
+                    } else {
+                        $(this).removeClass('on');
+                        selectList.slideUp(duration);
+                    }
+                });
+            });
+        }, 
+
         init: function() {
             frontEnd.actions();
             frontEnd.sliders();
+            frontEnd.select();
         },
 
     }
@@ -195,6 +257,8 @@ jQuery(document).ready(($) => {
             $('body').on('submit', '.contact-us__form', backEnd.sendForm);
             $('body').on('submit', '.review-form', backEnd.sendForm);
             $('body').on('submit', '.partners-contact-form', backEnd.sendForm);
+
+            $('body').on('click', '.product__variant', backEnd.showVariantCustom);
         },
 
         showVariant: function() {
@@ -253,16 +317,79 @@ jQuery(document).ready(($) => {
             });
         },
 
+        showVariantCustom: function() {
+
+            let variantID = parseInt($(this).attr('data-value')),
+                productID = parseInt($(this).attr('data-product-id'));
+
+            $('.add-to-cart').attr('variant-id', variantID);  
+
+            let formData = new FormData();
+                formData.append('action', 'sp_get_product_variable');
+                formData.append('variantID', variantID);
+                formData.append('productID', productID);
+
+            $.ajax({
+                url: spJs.ajaxUrl,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (data) {  
+                    let regularPrice = parseFloat(data.regularPrice),
+                        salePrice = parseFloat(data.salePrice),
+                        symbol = data.symbol,
+                        productPrice = '';
+
+                    regularPrice = regularPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');  
+                    salePrice = salePrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& '); 
+                    
+                    regularPrice = regularPrice.replace('.00', '');
+                    salePrice = salePrice.replace('.00', '');
+
+                    if(salePrice != regularPrice){  
+                        
+                        productPrice += '<div class="catalog-price-wrap catalog-price-old">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
+                        productPrice += '</div>';    
+
+                        productPrice += '<div class="catalog-price-wrap catalog-price-new">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+salePrice+'</span>';
+                        productPrice += '</div> ';
+
+                    } else {                       
+                        productPrice += '<div class="catalog-price-wrap catalog-price-regular">';
+                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
+                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
+                        productPrice += '</div> ';
+                    }
+
+                    $('.price-ajax-result-'+productID).html(productPrice);
+                    $('.add-to-cart-'+productID).attr('variant-id', variantID);
+                }
+            });
+        },
+
         addToCart: function(){
             let productID = $(this).attr('data-product-id'),
                 variationID = $(this).attr('variant-id'),
-                additional = $('.product__additional-'+productID).val();
+                additional = $('.product__additional-'+productID).html();
+
+                console.log(productID);
+                console.log(variationID);
+                console.log(additional);
 
             let formData = new FormData();
                 formData.append('action', 'sp_add_to_cart');
                 formData.append('productID', productID);
                 formData.append('variationID', variationID);
-                if(typeof(additional) != 'undefined')formData.append('additional', additional);
+                //if(typeof(additional) != 'undefined')formData.append('additional', additional);
+                formData.append('additional', additional);
+
 
             $.ajax({
                 url: spJs.ajaxUrl,

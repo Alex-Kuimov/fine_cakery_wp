@@ -888,7 +888,7 @@ function sp_get_catalog_items($args, $tags, $result=null){
 
     if(isset($args['cross_sell']) && $args['cross_sell'] == true){
         $result .= '<div class="catalog-description container">';
-            $result .= '<h2>You may also like</h2>';
+            $result .= '<h2>'.__('You may also like', 'sp-theme').'</h2>';
         $result .= '</div>';
     }
 
@@ -1027,7 +1027,7 @@ function sp_get_variant_product($productID, $result=null){
         }
 
         $result .= '<p class="product__select-title">'.$attributeLabelName.':</p>';
-        $result .= '<select class="product__select product__variant" data-product-id="'.$productID.'">';
+        $result .= '<select class="product__select product__variant select" data-product-id="'.$productID.'" id="product__variant-'.$productID.'" data-class="product__variant">';
 
         foreach ($variations as $variation) {
             foreach ($childrenIDs as $childrenID) { 
@@ -1057,6 +1057,26 @@ function sp_get_variant_product($productID, $result=null){
 
     return $result;
 }    
+
+function sp_get_additional_product($productID, $result=null){
+
+    $title = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_title');
+    $list = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_list');
+    $lists = explode('|', $list);
+
+    if($list){
+        $result .= '<p class="product__select-title">Choose the flavour:</p>';
+        $result .= '<select class="product__select select" id="product__additional-'.$productID.'" data-class="product__additional">';
+
+            foreach ($lists as $list) {
+                $result .= '<option value="'.$list.'">'.$list.'</option>';
+            }
+
+        $result .= '</select>';
+    }    
+
+    return $result;
+}
 
 function sp_get_product_price($productID, $productPrice=null){
     $regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
@@ -1135,26 +1155,6 @@ function sp_get_product_price($productID, $productPrice=null){
     }
 
     return $productPrice;
-}
-
-function sp_get_additional_product($productID, $result=null){
-
-    $title = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_title');
-    $list = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_property_list');
-    $lists = explode('|', $list);
-
-    if($list){
-        $result .= '<p class="product__select-title">Choose the flavour:</p>';
-        $result .= '<select class="product__select product__additional-'.$productID.'">';
-
-            foreach ($lists as $list) {
-                $result .= '<option value="'.$list.'">'.$list.'</option>';
-            }
-
-        $result .= '</select>';
-    }    
-
-    return $result;
 }
 
 function sp_get_reviews($productID, $result=null){
