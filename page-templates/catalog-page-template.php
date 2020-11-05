@@ -23,7 +23,7 @@ if($pageID == $shopPageID){
             $args = array(
                 'taxonomy'      => array('product_cat'),
                 'orderby'       => 'id', 
-                'order'         => 'DESC',
+                'order'         => 'ASC',
             );
             $categories = SP_Framework_Taxonomy_Utility::get_list($args);
             

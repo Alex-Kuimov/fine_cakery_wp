@@ -441,7 +441,7 @@ textarea {
 
 .catalog__title {
     color: #55403B;
-    margin: 12px 0;
+    margin: 12px 0 25px 0;
     font-size: 26px;
     font-family: 'Optimum', sans-serif;
 }

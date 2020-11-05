@@ -19,16 +19,17 @@ function sp_set_page_template($template){
 }
 add_filter('template_include', 'sp_set_page_template', 99);
 
-function apply_custom_title_to_cart_item( $cart_object ) {  
-    if( !WC()->session->__isset( "reload_checkout" )) {
-        foreach ( $cart_object->cart_contents as $key => $value ) {
-            if($value['data']->id == $value['custom_ID']){
-                $value['data']->set_name($value['custom_product_name']);
-            }           
-        }  
-    }  
+
+
+function cart_product_title( $title, $values, $cart_item_key ) {
+
+    if(isset($values['custom_product_name']) && !empty($values['custom_product_name'])){
+        return $title.' ('.$values['custom_product_name'].')';
+    } else {
+        return $title;
+    }    
 }
-add_action('woocommerce_before_calculate_totals', 'apply_custom_title_to_cart_item', 99);
+add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);
 
 function sp_decl_of_num($num, $result=null) {
     $result = __('Reviews', 'sp-theme');
