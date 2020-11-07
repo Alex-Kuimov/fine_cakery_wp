@@ -12,13 +12,13 @@ function sp_add_checkout_privacy_policy() {
        'input_class'   => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
        'required'      => true,
        'default'       => 1,
-       'label'         => __( 'I have read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>', 'sp-theme'),
+       'label'         => __( 'By ticking this box you declare that you have read and accepted our <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">Privacy Policy</a> and <a href="'.get_permalink(TERMS_PAGE_ID).'">Terms of service</a>', 'sp-theme'),
     )); 
 }
        
 function sp_not_approved_privacy() {
     if ( ! (int) isset( $_POST['privacy_policy'] ) ) {
-        wc_add_notice( __( 'You have not read and agree to the website <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">terms and conditions</a>', 'sp-theme'), 'error' );
+        wc_add_notice( __( 'You have not read and agree our <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">Privacy Policy</a> and <a href="'.get_permalink(TERMS_PAGE_ID).'">Terms of service</a>', 'sp-theme'), 'error' );
     }
 }
 
