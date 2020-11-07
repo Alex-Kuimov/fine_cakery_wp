@@ -74,6 +74,12 @@ textarea {
     background-color: #F8F5F2;
 }
 
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: transparent;
+    transition: 0.3s;
+}
+
 .container {
     display: block;
     max-width: 100%;

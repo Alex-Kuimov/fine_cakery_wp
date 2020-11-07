@@ -1360,6 +1360,7 @@
     text-transform: uppercase;
     border-left: 1px solid #f1f1f1;
     border-right: 1px solid #f1f1f1;
+    font-weight: 700;
 }
 
 .woocommerce table.shop_table .product-subtotal {
@@ -1848,7 +1849,7 @@ ul.payment_methods li::before {
 }
 
 .woocommerce table.shop_table td{
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .woocommerce-customer-details,
@@ -1940,6 +1941,10 @@ ul.payment_methods li::before {
 .woocommerce table.shop_table_responsive tr td::before, 
 .woocommerce-page table.shop_table_responsive tr td::before {
     font-weight: bold;
+}
+
+.showcoupon{
+    text-decoration: underline;
 }
 
 
