@@ -1205,6 +1205,13 @@
     .vision .line{
         display: none;
     }
+    #coupon_code,
+    .woocommerce .coupon button.button{
+        width: 100%!important;
+    }
+    #coupon_code{
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (max-width: 375px) {
