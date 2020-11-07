@@ -64,6 +64,16 @@ textarea {
     height: 100px;
 }
 
+*::selection {
+    color:#55403B;
+    background-color: #F8F5F2;
+}
+
+*::-moz-selection {
+    color:#55403B;
+    background-color: #F8F5F2;
+}
+
 .container {
     display: block;
     max-width: 100%;
@@ -331,6 +341,7 @@ textarea {
     font-size: 34px;
     text-transform: uppercase;
     font-weight: normal;
+    text-align: center;
 }
 
 .catalog-menu__item {

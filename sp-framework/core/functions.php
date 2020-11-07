@@ -1174,7 +1174,7 @@ function sp_get_reviews($productID, $result=null){
             $result .= '<h2>Reviews</h2>';
 
             $result .= '<p>'.$reviewCount.' '.sp_decl_of_num($reviewCount).'</p>';            
-            $result .= '<button class="button reviews__button show-modal" data-modal="review" product-id="'.$productID.'">Leave a review</button>';
+            $result .= '<button class="button reviews__button show-modal" data-modal="review" product-id="'.$productID.'">'.__('Write a review', 'sp-theme').'</button>';
 
             if($comments){
                 $result .= '<div class="reviews-wrap">';

@@ -1380,12 +1380,13 @@
     .modal .modal__body .product__button:hover, 
     .modal .modal__body .product__button-cancel, 
     .modal .modal__body .product__button-cancel:hover {
-        width: 100px;
+        width: 115px;
         font-size: 12px;
         min-width: unset;
         height: 40px;
-        padding: 3px;
+        padding: 3px 10px;
         line-height: 35px;
+        margin-right: 10px!important;
     }
     .modal .catalog-price-old .catalog__currency, 
     .modal .catalog-price-old .catalog__price{
@@ -1400,6 +1401,13 @@
     }
     .review-form-wrap input, .review-form-wrap textarea{
         width: 86%;
+    }
+    .catalog-title{
+        padding-top: 0px;
+    }    
+    .go-to-cart-wrap{
+        margin-left: 115px;
+        margin-top: 20px;
     }
 }
 
