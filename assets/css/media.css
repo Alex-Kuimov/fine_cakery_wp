@@ -757,10 +757,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 500px;
+        width: 550px;
     }
     .for-partners{
-        width: 500px;
+        width: 550px;
     }
     .modal{
         width: 450px;
@@ -851,13 +851,13 @@
         height: 220px;   
     }
     .sbi_photo_wrap a {
-        width: 235px;
-        height: 235px;
+        width: 245px;
+        height: 245px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 235px;
-        height: 235px;
-        margin-bottom: 10px!important;
+        width: 245px;
+        height: 245px;
+        margin-bottom: 0px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
         width: 500px!important;
@@ -926,10 +926,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 400px;
+        width: 430px;
     }
     .for-partners{
-        width: 400px;
+        width: 430px;
     }
     .modal{
         width: 380px;
@@ -974,7 +974,7 @@
         height: 300px;
     }
     .blog__item {
-        width: 420px;
+        width: 435px;
         height: 490px;
     }
     .blog__item-wrap{
@@ -1013,13 +1013,13 @@
         height: 190px;   
     }
     .sbi_photo_wrap a {
-        width: 180px;
-        height: 180px;
+        width: 195px;
+        height: 195px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 180px;
-        height: 180px;
-        margin-bottom: 15px!important;
+        width: 195px;
+        height: 195px;
+        margin-bottom: 0px!important;
     }
     .breadcrumbs{
         margin-left: 30px;
@@ -1082,7 +1082,7 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 350px;
+        width: 380px;
     }
     .for-partners{
         width: 350px;
@@ -1110,7 +1110,7 @@
         height: 280px;
     }
     .blog__item {
-        width: 350px;
+        width: 370px;
         height: 470px;
     }
     .about__item img {
@@ -1159,13 +1159,13 @@
         height: 150px;   
     }
     .sbi_photo_wrap a {
-        width: 160px;
-        height: 160px;
+        width: 170px;
+        height: 170px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 160px;
-        height: 160px;
-        margin-bottom: 15px!important;
+        width: 170px;
+        height: 170px;
+        margin-bottom: 0px!important;
     }
     .blog__item-wrap{
         height: 195px;
@@ -1198,10 +1198,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 300px;
+        width: 330px;
     }
     .for-partners{
-        width: 300px;
+        width: 330px;
     }
     .modal{
         width: 330px;
@@ -1247,7 +1247,7 @@
         height: 250px;
     }
     .blog__item {
-        width: 300px;
+        width: 335px;
         height: 430px;
     }
     .about__item img {
@@ -1294,13 +1294,13 @@
         width: 300px;
     }
     .sbi_photo_wrap a {
-        width: 130px;
-        height: 130px;
+        width: 145px;
+        height: 145px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 130px;
-        height: 130px;
-        margin-bottom: 10px!important;
+        width: 145px;
+        height: 145px;
+        margin-bottom: 0px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
         width: 300px!important;
@@ -1399,7 +1399,8 @@
     .gallery__item img{
         height: 130px;   
     }
-    .review-form-wrap input, .review-form-wrap textarea{
+    .review-form-wrap input, 
+    .review-form-wrap textarea{
         width: 86%;
     }
     .catalog-title{
@@ -1416,10 +1417,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 280px;
+        width: 300px;
     }
     .for-partners{
-        width: 280px;
+        width: 300px;
     }
     .modal{
         width: 280px;
@@ -1472,5 +1473,14 @@
     }
     .review-form-wrap input, .review-form-wrap textarea{
         width: 83%;
+    }
+    .sbi_photo_wrap a {
+        width: 135px;
+        height: 135px;
+    }
+    #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
+        width: 135px;
+        height: 135px;
+        margin-bottom: 0px!important;
     }
 }
