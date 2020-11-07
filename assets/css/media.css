@@ -679,7 +679,7 @@
         opacity: 1;
     }
     .blog__item {
-        width: 460px;
+        width: 580px;
         height: 550px;
     }
     .catalog__item {
@@ -757,10 +757,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 550px;
+        width: 530px;
     }
     .for-partners{
-        width: 550px;
+        width: 530px;
     }
     .modal{
         width: 450px;
@@ -822,7 +822,7 @@
         height: 570px;
     }
     .catalog__item {
-        width: 229px;
+        width: 245px;
     }
     .catalog__item img {
         height: 340px;
@@ -851,16 +851,17 @@
         height: 220px;   
     }
     .sbi_photo_wrap a {
-        width: 245px;
-        height: 245px;
+        width: 260px;
+        height: 260px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 245px;
-        height: 245px;
+        width: 260px;
+        height: 260px;
         margin-bottom: 0px!important;
+        padding: 10px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 500px!important;
+        width: 530px!important;
     }
     .for-partners-slider{
         height: 380px;
@@ -970,7 +971,7 @@
         left: 36px;
     }
     .favorite__item {
-        width: 380px;
+        width: 360px;
         height: 300px;
     }
     .blog__item {
@@ -997,7 +998,7 @@
         font-size: 14px;
     }
     .catalog__item {
-        width: 178px;
+        width: 194px;
     }
     .catalog__item img {
         height: 265px;
@@ -1013,19 +1014,20 @@
         height: 190px;   
     }
     .sbi_photo_wrap a {
-        width: 195px;
-        height: 195px;
+        width: 210px;
+        height: 210px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 195px;
-        height: 195px;
+        width: 210px;
+        height: 210px;
         margin-bottom: 0px!important;
+        padding: 10px;
     }
     .breadcrumbs{
         margin-left: 30px;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 400px!important;
+        width: 430px!important;
     }
     .for-partners-slider{
         height: 355px;
@@ -1074,6 +1076,9 @@
     }
     .footer__copyright{
         text-align: center;
+    }
+    .instagram-wrap{
+        margin-bottom: 40px;
     }
 }
 
@@ -1125,7 +1130,7 @@
         height: 530px;
     }
     .catalog__item {
-        width: 154px;
+        width: 169px;
     }
     .catalog__item img {
         height: 230px;
@@ -1159,13 +1164,14 @@
         height: 150px;   
     }
     .sbi_photo_wrap a {
-        width: 170px;
-        height: 170px;
+        width: 185px;
+        height: 185px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 170px;
-        height: 170px;
+        width: 185px;
+        height: 185px;
         margin-bottom: 0px!important;
+        padding: 5px;
     }
     .blog__item-wrap{
         height: 195px;
@@ -1259,7 +1265,7 @@
         height: 470px;
     }
     .catalog__item {
-        width: 128px;
+        width: 145px;
     }
     .catalog__item img {
         height: 200px;
@@ -1294,16 +1300,16 @@
         width: 300px;
     }
     .sbi_photo_wrap a {
-        width: 145px;
-        height: 145px;
+        width: 160px;
+        height: 160px;
     }
     #sb_instagram.sbi_col_1 #sbi_images .sbi_item {
-        width: 145px;
-        height: 145px;
+        width: 160px;
+        height: 160px;
         margin-bottom: 0px!important;
     }
     .for-partners-slider, .for-partners-slider .swiper-slide {
-        width: 300px!important;
+        width: 330px!important;
     }
     .for-partners-slider .swiper-slide{
         height: 210px;
@@ -1340,7 +1346,7 @@
         text-align: center;
     }
     .catalog__item .catalog__button{
-        padding: 3px 5px;
+        padding: 5px 5px 3px 5px;
         position: relative;
         width: 67px;
         margin-top: 10px;
@@ -1417,10 +1423,10 @@
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
     .page-inner {
-        width: 300px;
+        width: 280px;
     }
     .for-partners{
-        width: 300px;
+        width: 280px;
     }
     .modal{
         width: 280px;
@@ -1464,7 +1470,7 @@
     .modal .modal__body .product__button:hover, 
     .modal .modal__body .product__button-cancel, 
     .modal .modal__body .product__button-cancel:hover {
-        width: 80px;
+        width: 90px;
         font-size: 10px;
         min-width: unset;
         height: 40px;
@@ -1482,5 +1488,6 @@
         width: 135px;
         height: 135px;
         margin-bottom: 0px!important;
+        padding: 5px!important;
     }
 }
