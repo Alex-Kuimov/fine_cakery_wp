@@ -1379,16 +1379,13 @@
     height: 55px !important;
     font-size: 16px !important;
     line-height: 55px !important;
-    text-decoration: underline !important;
     overflow: hidden !important;
-    padding: 0 !important;
     font-weight: 400 !important;
     border-radius: 0 !important;
     left: initial !important;
     border: none !important;
     display: inline-block !important;
-    margin-left: 20px !important;
-    background-color: #fff!important;
+    margin-left: 10px !important;
 }
 
 .woocommerce button.button:disabled,

@@ -18,7 +18,7 @@ function sp_add_checkout_privacy_policy() {
        
 function sp_not_approved_privacy() {
     if ( ! (int) isset( $_POST['privacy_policy'] ) ) {
-        wc_add_notice( __( 'You have not read and agree our <a href="'.get_permalink(PRIVACY_POLICY_PAGE_ID).'">Privacy Policy</a> and <a href="'.get_permalink(TERMS_PAGE_ID).'">Terms of service</a>', 'sp-theme'), 'error' );
+        wc_add_notice( __( 'Please read our terms and check the box ', 'sp-theme'), 'error' );
     }
 }
 
