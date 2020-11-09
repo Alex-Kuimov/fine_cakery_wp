@@ -3,6 +3,11 @@
 * Functions 
 */
 
+
+/*
+* System
+*/
+
 function sp_set_page_template($template){
     $currentId = get_the_ID();
     $currentPostType = get_post_type($currentId);
@@ -20,17 +25,6 @@ function sp_set_page_template($template){
 add_filter('template_include', 'sp_set_page_template', 99);
 
 
-
-function cart_product_title( $title, $values, $cart_item_key ) {
-
-    if(isset($values['custom_product_name']) && !empty($values['custom_product_name'])){
-        return $title.' ('.$values['custom_product_name'].')';
-    } else {
-        return $title;
-    }    
-}
-add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);
-
 function sp_decl_of_num($num, $result=null) {
     $result = __('Reviews', 'sp-theme');
 
@@ -45,6 +39,11 @@ function sp_decl_of_num($num, $result=null) {
 
     return $result;
 }
+
+
+/*
+*  Main
+*/
 
 function sp_get_menu($type=null, $result=null){
 

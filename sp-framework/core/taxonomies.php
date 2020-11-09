@@ -4,7 +4,6 @@
 */
 
 $spTM = new SP_Framework_Taxonomy_Meta_Box('product_cat');
- 
 $args = array(
 	'validate' => 'y',
 	'sanitize' => 'y',
@@ -19,5 +18,4 @@ $args = array(
  		),
  	),
 );
-  
 $spTM->create($args);

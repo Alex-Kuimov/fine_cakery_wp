@@ -750,6 +750,11 @@
     display: block;
 }
 
+.catalog__wrap .sp-form-field-chk-label{
+    margin-left: 0px;
+    font-size: 16px;
+}
+
 .product .catalog-price-regular{
     display: flex;
     justify-content: center;

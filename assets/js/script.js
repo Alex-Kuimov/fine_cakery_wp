@@ -379,17 +379,16 @@ jQuery(document).ready(($) => {
         addToCart: function(){
             let productID = $(this).attr('data-product-id'),
                 variationID = $(this).attr('variant-id'),
+                addPrice = $('#option-checkbox-'+productID+':checked').val(),
                 additional = $('.product__additional-'+productID).html();
 
-                console.log(productID);
-                console.log(variationID);
-                console.log(additional);
 
             let formData = new FormData();
                 formData.append('action', 'sp_add_to_cart');
                 formData.append('productID', productID);
                 formData.append('variationID', variationID);
                 if(typeof(additional) != 'undefined')formData.append('additional', additional);
+                if(typeof(addPrice) != 'undefined')formData.append('addPrice', addPrice);
 
             $.ajax({
                 url: spJs.ajaxUrl,

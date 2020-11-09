@@ -3,7 +3,12 @@
 * WooCommerce
 */
 
-//GDPR   
+
+/*
+* GDPR
+*/
+
+
 function sp_add_checkout_privacy_policy() {
     woocommerce_form_field( 'privacy_policy', array(
        'type'          => 'checkbox',
@@ -32,7 +37,6 @@ add_action('woocommerce_checkout_process', 'sp_not_approved_privacy');
 
 
 // Register main datepicker jQuery plugin script
-add_action( 'wp_enqueue_scripts', 'enabling_date_picker' );
 function enabling_date_picker() {
 
     // Only on front-end and checkout page
@@ -41,9 +45,9 @@ function enabling_date_picker() {
     // Load the datepicker jQuery-ui plugin script
     wp_enqueue_script( 'jquery-ui-datepicker' );
 }
+add_action( 'wp_enqueue_scripts', 'enabling_date_picker' );
 
 // Call datepicker functionality in your custom text field
-add_action('woocommerce_after_order_notes', 'sp_datepicker_field', 10, 1);
 function sp_datepicker_field( $checkout ) {
 
     date_default_timezone_set('America/Los_Angeles');
@@ -56,7 +60,7 @@ function sp_datepicker_field( $checkout ) {
     echo '
     <script>
         jQuery(function($){
-            $("#datepicker").datepicker({ minDate: 0});
+            $("#datepicker").datepicker({ minDate: 3});
         });
     </script>';
 
@@ -73,31 +77,60 @@ function sp_datepicker_field( $checkout ) {
 
     echo '</div>';
 }
-
-/*
-* Process the checkout
-*/
+add_action('woocommerce_after_order_notes', 'sp_datepicker_field', 10, 1);
 
 
-/*
-add_action('woocommerce_checkout_process', 'sp_checkout_field_process');
-function sp_checkout_field_process() {
-    global $woocommerce;
-
-    // Check if set, if its not set add an error.
-    if (!$_POST['delivery_date'])
-        wc_add_notice( '<strong>Delivery Date</strong> ' . __( 'is a required field.', 'woocommerce' ), 'error' );
-}
-*/
-
-/*
-* Update the order meta with custom fields values 
-*/
-
-add_action('woocommerce_checkout_update_order_meta', 'sp_checkout_field_update_order_meta');
 function sp_checkout_field_update_order_meta($order_id) {
 
     if (!empty($_POST['delivery_date'])) {
         update_post_meta($order_id, 'Delivery Date', sanitize_text_field($_POST['delivery_date']));
     }
+}
+add_action('woocommerce_checkout_update_order_meta', 'sp_checkout_field_update_order_meta');
+
+
+/*
+* Cart
+*/
+
+
+function cart_product_title( $title, $values, $cart_item_key ) {
+
+    if(isset($values['custom_product_name']) && !empty($values['custom_product_name'])){
+        return $title.' ('.$values['custom_product_name'].')';
+    } else {
+        return $title;
+    }    
+}
+add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);
+
+
+/*
+function cart_item_price( $price, $values, $cart_item_key ) {
+
+    //print_r($values);
+
+    if(isset($values['custom_price']) && !empty($values['custom_price'])){
+        return '<span class="woocommerce-Price-currencySymbol">'.get_woocommerce_currency_symbol().'</span> '.$values['custom_price'];
+    } else {
+        return $price;
+    }    
+
+    return $price;
+}
+add_filter( 'woocommerce_cart_item_price', 'cart_item_price', 10, 3 );
+*/
+
+
+add_action('woocommerce_before_calculate_totals', 'apply_custom_price_to_cart_item', 99);
+function apply_custom_price_to_cart_item( $cart_object ) {  
+    if( !WC()->session->__isset( "reload_checkout" )) {
+        foreach ( $cart_object->cart_contents as $key => $value ) {
+            if( isset( $value["custom_price"] ) ) {
+                if($value['data']->id == $value["custom_ID"]){
+                    $value['data']->set_price($value["custom_price"]);
+                }   
+            }
+        }  
+    }  
 }

@@ -38,12 +38,54 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 		$productCount = 1;
 		$variationID = sanitize_text_field($_POST['variationID']);
 		$additional = sanitize_text_field($_POST['additional']);
+		$addPrice = sanitize_text_field($_POST['addPrice']);
+
 		$data = array();
 
 		if($additional){
 			$data['custom_ID'] = $productID;
 			$data['custom_product_name'] = $additional;
 		}
+
+
+		if($addPrice){
+
+			$data['custom_ID'] = $productID;
+			$data['custom_product_name'] = 'additional';
+
+			$regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
+			$salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
+			$product = wc_get_product($productID);
+			$childrenIDs = $product->get_children();
+
+
+			if(!$childrenIDs){
+
+				if($salePrice){
+					$data['custom_price'] = $salePrice + $addPrice;
+				} else {
+					$data['custom_price'] = $regularPrice + $addPrice;
+				}
+
+			} else {
+				if(isset($childrenIDs[0])) $variationID = $childrenIDs[0];
+
+		        $variableP = new WC_Product_Variable($productID);
+		        $prices = $variableP->get_variation_prices();
+
+		        if(isset($prices['regular_price'][$variationID])){
+		            $regularPrice = $prices['regular_price'][$variationID];
+		            $data['custom_price'] = $regularPrice + $addPrice;
+		        }
+
+		        if(isset($prices['sale_price'][$variationID])){
+		            $salePrice = $prices['sale_price'][$variationID];
+		            $data['custom_price'] = $salePrice + $addPrice;
+		        }
+			}
+
+		}
+
            
 		$woocommerce->cart->add_to_cart($productID, $productCount, $variationID, array(), $data);
 
