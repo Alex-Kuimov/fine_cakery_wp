@@ -12,12 +12,12 @@ $postImgUrl = SP_Framework_Post_Type_Utility::get_image($postID, 'full');
 $date = get_the_date('d.m.Y');
 ?>
 
-<div class="blog-inner-wrap container">
+<div class="blog-inner-wrap ">
     <div class="blog-back">
         <a href="<?php echo get_permalink(get_option('page_for_posts'));?>">← Back to Blog</a>
     </div>
 
-    <div class="blog-inner">
+    <div class="page-inner container">
         <div class="blog-inner__date"><?php echo $date;?></div>
         <h1 class="blog-inner__title"><?php echo get_the_title();?></h1>
 

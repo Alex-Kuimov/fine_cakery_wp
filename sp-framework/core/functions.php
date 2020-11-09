@@ -563,7 +563,7 @@ function sp_get_section_contact($result=null){
     $title = get_theme_mod('sp_contact_title');
     $text = get_theme_mod('sp_contact_text');
 
-    $result .= '<section class="contact-us container">';
+    $result .= '<section class="contact-us">';
 
         if($title){
             $result .= '<h2>'.$title.'</h2>';
@@ -573,7 +573,7 @@ function sp_get_section_contact($result=null){
             $result .= '<p class="contact-us__subtitle">'.$text.'</p>';
         }
 
-        $result .= '<div class="contact-us-wrap">';
+        $result .= '<div class="contact-us-wrap container">';
 
             $result .= sp_get_contacts('front');
 
