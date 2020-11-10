@@ -1864,10 +1864,19 @@ ul.payment_methods li::before {
     text-decoration: underline;
 }
 
+.additional{
+    font-style: italic;  
+}
+
+.woocommerce-cart .woocommerce table.shop_table td{
+    border-top: none!important;
+}
+
 
 /*
 * Custom Select
 */
+
 
 .select {
     display: block;

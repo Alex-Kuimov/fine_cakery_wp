@@ -45,6 +45,7 @@ function sp_decl_of_num($num, $result=null) {
 *  Main
 */
 
+
 function sp_get_menu($type=null, $result=null){
 
     if($type=='header'){
@@ -1077,6 +1078,20 @@ function sp_get_additional_product($productID, $result=null){
             }
 
         $result .= '</select>';
+    }    
+
+    return $result;
+}
+
+function sp_get_option_product($productID, $result=null){
+
+    $optionTitle = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_option_title');
+    $optionPrice = SP_Framework_Post_Type_Utility::get_meta($productID, 'product_option_price');
+
+    if(!empty($optionTitle) && !empty($optionPrice)){
+        $result .= '<div class="catalog__wrap">';
+            $result .= '<label for="option-checkbox-'.$productID.'" class="sp-form-field-chk-label"><input type="checkbox" name="chk" class="sp-form-field-checkbox option-checkbox" id="option-checkbox-'.$productID.'" required="" value="'.$optionPrice.'" data-text="'.$optionTitle.'"> <span>'.$optionTitle.'</span> <span>+ '.get_woocommerce_currency_symbol().' '.$optionPrice.'</span></label>';
+        $result .= '</div>';  
     }    
 
     return $result;

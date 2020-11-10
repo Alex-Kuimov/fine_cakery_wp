@@ -170,3 +170,37 @@ $args = array(
  	),
 );
 $spProductMeta->create($args);
+
+
+/*
+* Product options
+*/
+
+
+$spProductTagsMeta = new SP_Framework_Post_Type_Meta_Box();
+$args = array(
+	'post_type' => 'product',
+	'name'     	=> 'settings_product_options',
+	'label'		=> 'Options',
+	'validate' => 'n',
+	'sanitize' => 'n',
+ 	'fields' => array(
+ 		'product_option_title' =>  array(
+ 			'type' 	=> 'text',
+ 			'name' 	=> 'product_option_title',
+ 			'label' => 'Title',
+ 			'caption' => '',
+ 			'required' => 'n',
+ 			'default' => '', 
+ 		),
+ 		'product_option_price' =>  array(
+ 			'type' 	=> 'number',
+ 			'name' 	=> 'product_option_price',
+ 			'label' => 'Price',
+ 			'caption' => '',
+ 			'required' => 'n',
+ 			'default' => '', 
+ 		),
+ 	),
+);
+$spProductTagsMeta->create($args);

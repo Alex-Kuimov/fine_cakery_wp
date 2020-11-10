@@ -67,9 +67,7 @@ if(isset($childrenIDs[0])) $variantID  = $childrenIDs[0];
 
         <?php echo sp_get_additional_product($productID);?>
 
-        <div class="catalog__wrap">
-            <label for="option-checkbox-<?php echo $productID;?>" class="sp-form-field-chk-label"><input type="checkbox" name="chk" class="sp-form-field-checkbox option-checkbox" id="option-checkbox-<?php echo $productID;?>" required="" value="5"> <span>Add option</span> <span>+ CHF 5</span></label>
-        </div>    
+        <?php echo sp_get_option_product($productID);?>
 
         <div class="catalog__wrap">
             <div class="catalog-price-group price-ajax-result-<?php echo $productID;?> ">

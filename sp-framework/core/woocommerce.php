@@ -45,7 +45,6 @@ add_action( 'wp_enqueue_scripts', 'enabling_date_picker' );
 
 
 function sp_datepicker_field( $checkout ) {
-
     $title1 = get_theme_mod('sp_delivery_date_title1');
     $title2 = get_theme_mod('sp_delivery_date_title2');
     $placeholder = get_theme_mod('sp_delivery_date_placeholder');
@@ -83,7 +82,6 @@ function sp_datepicker_field( $checkout ) {
 }
 add_action('woocommerce_after_order_notes', 'sp_datepicker_field', 10, 1);
 
-
 function sp_checkout_field_update_order_meta($order_id) {
 
     if (!empty($_POST['delivery_date'])) {
@@ -99,42 +97,28 @@ add_action('woocommerce_checkout_update_order_meta', 'sp_checkout_field_update_o
 
 
 function cart_product_title( $title, $values, $cart_item_key ) {
-
     if(isset($values['custom_product_name']) && !empty($values['custom_product_name'])){
-        return $title.' ('.$values['custom_product_name'].')';
-    } else {
-        return $title;
-    }    
+        $title = $title.' ('.$values['custom_product_name'].')';
+    } 
+
+    if(isset($values['additional_product_name']) && !empty($values['additional_product_name'])){
+        $title = $title.'<br><span class="additional">'.$values['additional_product_name'].'</span>';
+    }
+
+    return $title;
 }
 add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);
 
 
-/*
-function cart_item_price( $price, $values, $cart_item_key ) {
-
-    //print_r($values);
-
-    if(isset($values['custom_price']) && !empty($values['custom_price'])){
-        return '<span class="woocommerce-Price-currencySymbol">'.get_woocommerce_currency_symbol().'</span> '.$values['custom_price'];
-    } else {
-        return $price;
-    }    
-
-    return $price;
-}
-add_filter( 'woocommerce_cart_item_price', 'cart_item_price', 10, 3 );
-*/
-
-
-add_action('woocommerce_before_calculate_totals', 'apply_custom_price_to_cart_item', 99);
-function apply_custom_price_to_cart_item( $cart_object ) {  
-    if( !WC()->session->__isset( "reload_checkout" )) {
+function apply_custom_price_to_cart_item($cart_object) { 
+    if( !WC()->session->__isset('reload_checkout')) {
         foreach ( $cart_object->cart_contents as $key => $value ) {
-            if( isset( $value["custom_price"] ) ) {
-                if($value['data']->id == $value["custom_ID"]){
-                    $value['data']->set_price($value["custom_price"]);
+            if( isset( $value['custom_price'] ) ) {
+                if($value['data']->id == $value['custom_ID']){
+                    $value['data']->set_price($value['custom_price']);
                 }   
             }
         }  
     }  
 }
+add_action('woocommerce_before_calculate_totals', 'apply_custom_price_to_cart_item', 99);

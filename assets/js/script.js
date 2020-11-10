@@ -380,7 +380,8 @@ jQuery(document).ready(($) => {
             let productID = $(this).attr('data-product-id'),
                 variationID = $(this).attr('variant-id'),
                 addPrice = $('#option-checkbox-'+productID+':checked').val(),
-                additional = $('.product__additional-'+productID).html();
+                additional = $('.product__additional-'+productID).html(),
+                optionText = $('#option-checkbox-'+productID+':checked').attr('data-text');
 
 
             let formData = new FormData();
@@ -389,6 +390,7 @@ jQuery(document).ready(($) => {
                 formData.append('variationID', variationID);
                 if(typeof(additional) != 'undefined')formData.append('additional', additional);
                 if(typeof(addPrice) != 'undefined')formData.append('addPrice', addPrice);
+                if(typeof(optionText) != 'undefined')formData.append('optionText', optionText);
 
             $.ajax({
                 url: spJs.ajaxUrl,

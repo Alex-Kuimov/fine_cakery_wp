@@ -39,6 +39,7 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 		$variationID = sanitize_text_field($_POST['variationID']);
 		$additional = sanitize_text_field($_POST['additional']);
 		$addPrice = sanitize_text_field($_POST['addPrice']);
+		$optionText = sanitize_text_field($_POST['optionText']);
 
 		$data = array();
 
@@ -47,11 +48,10 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 			$data['custom_product_name'] = $additional;
 		}
 
-
 		if($addPrice){
 
 			$data['custom_ID'] = $productID;
-			$data['custom_product_name'] = 'additional';
+			$data['additional_product_name'] = $optionText;
 
 			$regularPrice = SP_Framework_Woocommerce::get_product_price($productID);
 			$salePrice = SP_Framework_Woocommerce::get_product_sale_price($productID);
@@ -68,7 +68,6 @@ class SP_Add_To_Cart extends SP_Framework_AJAX {
 				}
 
 			} else {
-				if(isset($childrenIDs[0])) $variationID = $childrenIDs[0];
 
 		        $variableP = new WC_Product_Variable($productID);
 		        $prices = $variableP->get_variation_prices();
