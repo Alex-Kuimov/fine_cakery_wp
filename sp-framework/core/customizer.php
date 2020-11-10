@@ -200,6 +200,32 @@ $args = array(
                 ),
             ),
         ),
+        'delivery_date' => array(
+            'name'  => 'delivery_date',
+            'title' => 'Delivery Date',
+            'fields' => array(
+                'sp_delivery_date_title1' => array(
+                    'name' => 'sp_delivery_date_title1',
+                    'type' => 'input', 
+                    'label' => 'Title 1',
+                ),
+                'sp_delivery_date_title2' => array(
+                    'name' => 'sp_delivery_date_title2',
+                    'type' => 'input', 
+                    'label' => 'Title 2',
+                ),
+                'sp_delivery_date_placeholder' => array(
+                    'name' => 'sp_delivery_date_placeholder',
+                    'type' => 'input', 
+                    'label' => 'Placeholder',
+                ),
+                'sp_delivery_date_delay' => array(
+                    'name' => 'sp_delivery_date_delay',
+                    'type' => 'number', 
+                    'label' => 'Delay (Days)',
+                ),
+            ),
+        ),
     ),
 );
 

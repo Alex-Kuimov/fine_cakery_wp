@@ -36,31 +36,35 @@ add_action('woocommerce_checkout_process', 'sp_not_approved_privacy');
 */
 
 
-// Register main datepicker jQuery plugin script
 function enabling_date_picker() {
-
-    // Only on front-end and checkout page
     if( is_admin() || ! is_checkout() ) return;
 
-    // Load the datepicker jQuery-ui plugin script
     wp_enqueue_script( 'jquery-ui-datepicker' );
 }
 add_action( 'wp_enqueue_scripts', 'enabling_date_picker' );
 
-// Call datepicker functionality in your custom text field
+
 function sp_datepicker_field( $checkout ) {
+
+    $title1 = get_theme_mod('sp_delivery_date_title1');
+    $title2 = get_theme_mod('sp_delivery_date_title2');
+    $placeholder = get_theme_mod('sp_delivery_date_placeholder');
+    $delay = get_theme_mod('sp_delivery_date_delay');
+
+    if(empty($delay)){
+        $delay = 1;
+    }
 
     date_default_timezone_set('America/Los_Angeles');
     $mydateoptions = array('' => __('Select PickupDate', 'woocommerce' ));
 
     echo '<div id="my_custom_checkout_field">
-    <h3>'.__('Delivery Date').'</h3>';
+    <h3>'.$title1.'</h3>';
 
-    // YOUR SCRIPT HERE BELOW
     echo '
     <script>
         jQuery(function($){
-            $("#datepicker").datepicker({ minDate: 3});
+            $("#datepicker").datepicker({ minDate: '.$delay.'});
         });
     </script>';
 
@@ -69,9 +73,9 @@ function sp_datepicker_field( $checkout ) {
         'class'         => array('my-field-class form-row-wide'),
         'id'            => 'datepicker',
         'required'      => false,
-        'label'         => __('Delivery Date', 'sp-theme'),
-        'placeholder'       => __('Select Date', 'sp-theme'),
-        'options'     =>   $mydateoptions
+        'label'         => $title2,
+        'placeholder'   => $placeholder,
+        'options'       => $mydateoptions
         ),
     $checkout->get_value( 'cylinder_collect_date' ));
 
