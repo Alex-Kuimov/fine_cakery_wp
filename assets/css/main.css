@@ -1295,6 +1295,9 @@
     text-align: center;
 }
 
+.modal__body .catalog__wrap{
+    margin-top: 20px; 
+}
 
 /*
 * WooCommerce

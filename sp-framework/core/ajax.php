@@ -135,6 +135,7 @@ class Sp_Show_Modal extends SP_Framework_AJAX {
 
 	        $result .= sp_get_variant_product($productID);
 	        $result .= sp_get_additional_product($productID);
+	        $result .= sp_get_option_product($productID);
 
 	        $result .= '<div class="modal-product-btn-wrap">';
 	            $result .= '<button class="button product__button product__button-cancel">Cancel</button>';
