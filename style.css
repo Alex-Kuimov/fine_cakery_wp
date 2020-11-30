@@ -107,6 +107,14 @@ textarea:focus::placeholder {
 * Header
 */
 
+.header-lang__link{
+    display: none;
+}
+
+.header-lang__link_active{
+    display: block;
+}
+
 .header {
     border-bottom: 1px solid #f1f1f1;
 }
@@ -660,4 +668,24 @@ textarea:focus::placeholder {
 #coupon_code {
     margin-top: 0;
     padding-left: 20px;
+}
+
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt {
+    margin: 0;
+    height: 55px;
+    font-size: 16px;
+    line-height: 55px;
+    overflow: hidden;
+    padding: 0 20px;
+    font-weight: 400;
+    border-radius: 0;
+    left: initial;
+    border: none;
+    float: right;
+    display: inline-block;
+    color: #fff;
+    background-color: #55403B!important;
 }
