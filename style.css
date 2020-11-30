@@ -689,3 +689,8 @@ textarea:focus::placeholder {
     color: #fff;
     background-color: #55403B!important;
 }
+
+
+#ship-to-different-address{
+    display: none!important;
+}
