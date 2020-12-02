@@ -31,8 +31,10 @@ jQuery(document).ready(($) => {
 
         sliders: function() {
             var frontPageSlider = new Swiper('.front-page-slider', {
-                loop: false,
-
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                },
                 pagination: {
                     el: '.swiper-pagination',
                     dynamicBullets: true,

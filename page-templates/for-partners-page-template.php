@@ -47,7 +47,7 @@ get_header();
 		</div>
 			
 		<label for="sp-form-field-chk" class="sp-form-field-chk-label">
-			<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required=""> <?php echo __('By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service', 'sp-theme')?>
+			<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required=""> <?php echo __('By ticking this box you declare that you have read and accepted our <a href="'.get_the_permalink(PRIVACY_POLICY_PAGE_ID).'">Privacy Policy</a> and <a href="'.get_the_permalink(TERMS_PAGE_ID).'">Terms of service', 'sp-theme')?>
 		</label>
 	</form>
 

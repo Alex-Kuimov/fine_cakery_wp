@@ -458,63 +458,66 @@ function sp_get_section_blog($result=null){
 
     $title = get_theme_mod('sp_blog_title');
 
-    $result .= '<section class="blog-container">';
-        
-        if($title){
-            $result .= '<h2>'.$title.'</h2>';
-        }
+    $args = array(
+        'post_type'     => 'post',
+        'order'         => 'desc',
+        'numberposts'    => 3,
+    );
+    
+    $args['meta_query'][] = array(
+        array(
+            'key'     => 'sp_post_front_page',
+            'value'   => 'y',
+            'compare' => '=',
+            'type'    => 'CHAR',
+        )
+    );
+    
+    $spPosts = SP_Framework_Post_Type_Utility::get_list($args);
+    
+    if(count($spPosts)>0){
 
-        $result .= '<div class="blog-wrap">';
 
-            $args = array(
-                'post_type' 	=> 'post',
-                'order'			=> 'desc',
-                'numberposts'    => 3,
-            );
+        $result .= '<section class="blog-container">';
             
-            $args['meta_query'][] = array(
-                array(
-                    'key'     => 'sp_post_front_page',
-                    'value'   => 'y',
-                    'compare' => '=',
-                    'type'    => 'CHAR',
-                )
-            );
-            
-            $spPosts = SP_Framework_Post_Type_Utility::get_list($args);
-            
-            if(count($spPosts)>0){
-                foreach ($spPosts as $spPost) {
-
-                    $postID = $spPost['id'];
-                    $title = $spPost['title'];
-                    $url = $spPost['url'];
-                    $date = get_the_date('d.m.Y', $postID);
-                    $excerpt = get_the_excerpt($postID);
-                    $imageSrc = SP_Framework_Post_Type_Utility::get_image($postID, 'full');
-
-                    $result .= '<a href="'.$url.'" class="blog__item">';
-                        $result .= '<img src="'.$imageSrc.'" alt="'.$title.'">';
-                        $result .= '<div class="blog__item-wrap">';
-                            $result .= '<span>'.$date.'</span>';
-                            $result .= '<h3>'.$title.'</h3>';
-                            if($excerpt){
-                                $result .= '<p>'.$excerpt.'</p>';
-                            }    
-                        $result .= '</div>';
-                    $result .= '</a>';
-
-                }
+            if($title){
+                $result .= '<h2>'.$title.'</h2>';
             }
 
+            $result .= '<div class="blog-wrap">';
 
-        $result .= '</div>';
 
-        $pagePostsID = get_option('page_for_posts');    
+            foreach ($spPosts as $spPost) {
 
-        $result .= '<a href="'.get_permalink($pagePostsID).'" class="blog__view-more">View more →</a>';
+                $postID = $spPost['id'];
+                $title = $spPost['title'];
+                $url = $spPost['url'];
+                $date = get_the_date('d.m.Y', $postID);
+                $excerpt = get_the_excerpt($postID);
+                $imageSrc = SP_Framework_Post_Type_Utility::get_image($postID, 'full');
 
-    $result .= '</section>';
+                $result .= '<a href="'.$url.'" class="blog__item">';
+                    $result .= '<img src="'.$imageSrc.'" alt="'.$title.'">';
+                    $result .= '<div class="blog__item-wrap">';
+                        $result .= '<span>'.$date.'</span>';
+                        $result .= '<h3>'.$title.'</h3>';
+                        if($excerpt){
+                            $result .= '<p>'.$excerpt.'</p>';
+                        }    
+                    $result .= '</div>';
+                $result .= '</a>';
+
+            }
+
+            $result .= '</div>';
+
+            $pagePostsID = get_option('page_for_posts');    
+
+            $result .= '<a href="'.get_permalink($pagePostsID).'" class="blog__view-more">View more →</a>';
+
+        $result .= '</section>';
+
+    }    
 
     return $result;
 }
@@ -582,7 +585,7 @@ function sp_get_section_contact($result=null){
                 $result .= '<input type="text" class="sp-form-field" data-field="Name" placeholder="'.__('Your name', 'sp-theme').'" required>';
                 $result .= '<textarea class="sp-form-field" data-field="Comment" placeholder="'.__('Your comment', 'sp-theme').'" required></textarea>';
                 $result .= '<label for="sp-form-field-chk" class="sp-form-field-chk-label">';
-                    $result .= '<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required="">  '.__('By ticking this box you declare that you have read and accepted our Privacy Policy and Terms of service', 'sp-theme').'';
+                    $result .= '<input type="checkbox" name="chk" class="sp-form-field-checkbox" id="sp-form-field-chk" required="">  '.__('By ticking this box you declare that you have read and accepted our <a href="'.get_the_permalink(PRIVACY_POLICY_PAGE_ID).'">Privacy Policy</a> and <a href="'.get_the_permalink(TERMS_PAGE_ID).'">Terms of service</a>', 'sp-theme').'';
                 $result .= '</label>';
                 $result .= '<button class="button">'.__('Send message', 'sp-theme').'</button>';
             $result .= '</form>';

@@ -1873,6 +1873,7 @@ ul.payment_methods li::before {
     padding: 10px 15px;
     cursor: pointer;
     user-select: none;
+    height: 18px;
 }
 
 .new-select__list {
