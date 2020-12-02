@@ -695,6 +695,10 @@ textarea:focus::placeholder {
     background-color: #55403B!important;
 }
 
+.woocommerce ul#shipping_method li label{
+    font-weight: normal;
+}
+
 #ship-to-different-address{
     display: none!important;
 }
