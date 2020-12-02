@@ -1291,9 +1291,10 @@
         line-height: 24px;
     }
     .slider__title {
-        font-size: 34px;
+        font-size: 24px;
         margin: 0px;
         padding-top: 10px;
+        line-height: 32px;
     }
     .mobile-menu {
         top: 30px;
