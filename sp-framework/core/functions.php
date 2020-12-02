@@ -461,7 +461,8 @@ function sp_get_section_blog($result=null){
     $args = array(
         'post_type'     => 'post',
         'order'         => 'desc',
-        'numberposts'    => 3,
+        'numberposts'   => 3,
+        'post_status'   => 'publish'
     );
     
     $args['meta_query'][] = array(
