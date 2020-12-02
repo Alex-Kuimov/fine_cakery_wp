@@ -1078,6 +1078,10 @@
     margin-left: 13px;
 }
 
+.sp-form-field-chk-label a {
+    text-decoration: underline;
+}
+
 .for-partners-contact-form .addtoany_shortcode{
     text-align: left;
     margin-top: 40px;
