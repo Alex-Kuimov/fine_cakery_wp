@@ -386,7 +386,7 @@ function sp_get_section_slider($result=null){
                             }
 
                             if($btnText){
-                                $result .= '<a href="'.$btnLink.'" class="slider__button" title="'.$title.'">Learn more</a>';
+                                $result .= '<a href="'.$btnLink.'" class="slider__button" title="'.$title.'">'.$btnText.'</a>';
                             }  
 
                         $result .= '</div>';

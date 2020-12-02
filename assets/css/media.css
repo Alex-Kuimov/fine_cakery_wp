@@ -830,6 +830,10 @@
     .slider .slider__item {
         align-items: start;
     }
+    .slider__title, 
+    .slider__text {
+        width: 95%;
+    }
     .slider__title {
         text-align: center;
         font-size: 30px;
@@ -960,6 +964,15 @@
 }
 
 @media screen and (max-width: 480px) {
+
+    .slider__title, 
+    .slider__text {
+        width: 90%;
+    }
+    .slider__title{
+        font-size: 28px;
+        line-height: 35px;
+    }
     .container,
     .woocommerce-cart .page-inner,
     .woocommerce-checkout .page-inner,
