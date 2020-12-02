@@ -654,6 +654,10 @@
     .top-menu{
         padding-top: 10%; 
     }
+
+    .woocommerce ul.order_details li{
+        margin: 20px 10px;
+    }
 }
 
 @media screen and (max-width: 667px) {
@@ -1045,6 +1049,7 @@
     .slider__text {
         line-height: 25px;
         margin-top: 10px;
+        margin-bottom: 15px;
         font-size: 14px;
     }
     .catalog__item {
