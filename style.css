@@ -695,7 +695,10 @@ textarea:focus::placeholder {
     background-color: #55403B!important;
 }
 
-
 #ship-to-different-address{
     display: none!important;
+}
+
+.page-template-contact-page-template .contact-us{
+    background: #fff;
 }
