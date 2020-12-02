@@ -540,7 +540,7 @@
         width: 580px;
     }
     .slider .slider-wrap {
-        width: 680px;
+        width: 650px;
     }
     .about {
         flex-direction: column;
@@ -670,6 +670,10 @@
     }
     .slider .slider-wrap {
         width: 500px;
+    }
+    .slider__title,
+    .slider__text{
+        width: 100%
     }
     .contact-us-wrap {
         flex-direction: column;
