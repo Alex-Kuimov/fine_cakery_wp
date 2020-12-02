@@ -274,6 +274,7 @@ textarea:focus::placeholder {
     color: #fff;
     font-size: 18px;
     line-height: 32px;
+    margin-top: 0px;
     margin-bottom: 40px;
     width: 600px;
     font-family: 'Optimum',sans-serif;
