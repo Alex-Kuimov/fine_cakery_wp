@@ -265,6 +265,7 @@ textarea:focus::placeholder {
     font-family: 'Optimum', sans-serif;
     width: 600px;
     line-height: 50px;
+    margin: 20px 0px;
 }
 
 .slider__text {
@@ -273,7 +274,7 @@ textarea:focus::placeholder {
     color: #fff;
     font-size: 18px;
     line-height: 32px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     width: 600px;
     font-family: 'Optimum',sans-serif;
 }
