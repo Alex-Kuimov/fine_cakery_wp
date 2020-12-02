@@ -1157,12 +1157,15 @@
         font-size: 30px;
     }
     .favorite__item h3 {
-        font-size: 32px;
+        font-size: 38px;
         margin: 3px;
     }
     .favorite__item {
         width: 350px;
         height: 280px;
+    }
+    .favorite__button{
+        display: none;
     }
     .blog__item {
         width: 370px;
@@ -1503,6 +1506,10 @@
     .catalog__button {
         font-size: 12px;
     }
+    .favorite__item p{
+        display: none;
+    }
+
     .favorite__button {
         display: none;
     }
