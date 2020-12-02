@@ -440,7 +440,7 @@ function sp_get_section_favorite($result=null){
                             }
 
                             $result .= '<h3>'.$category['title'].'</h3>';
-                            $result .= '<p>'.$category['description'].'</p>';
+                            $result .= '<p class="favorite__description">'.$category['description'].'</p>';
                             $result .= '<p class="favorite__button">Shop now</p>';
                         $result .= '</a>'; 
                     }    
