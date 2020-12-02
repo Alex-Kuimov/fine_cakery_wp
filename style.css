@@ -260,18 +260,22 @@ textarea:focus::placeholder {
     position: relative;
     z-index: 2;
     color: #fff;
-    font-size: 42px;
+    font-size: 34px;
     font-weight: normal;
     font-family: 'Optimum', sans-serif;
+    width: 600px;
+    line-height: 50px;
 }
 
 .slider__text {
     position: relative;
     z-index: 2;
     color: #fff;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 32px;
     margin-bottom: 50px;
+    width: 600px;
+    font-family: 'Optimum',sans-serif;
 }
 
 .slider__button {
