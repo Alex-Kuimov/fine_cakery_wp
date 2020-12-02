@@ -29,7 +29,7 @@ function sp_decl_of_num($num, $result=null) {
     $result = __('Reviews', 'sp-theme');
 
     if($num == 0){
-        $result = __('Review', 'sp-theme');
+        $result = __('Reviews', 'sp-theme');
     }
 
     if($num == 1){

@@ -252,72 +252,12 @@ jQuery(document).ready(($) => {
     let backEnd = {
         actions: function() {
             $('.show-modal').on('click', backEnd.showModal);
-            //$('body').on('change', '.product__variant', backEnd.showVariant);
             $('body').on('click', '.add-to-cart', backEnd.addToCart);
             $('body').on('submit', '.contact-us__form', backEnd.sendForm);
             $('body').on('submit', '.review-form', backEnd.sendForm);
             $('body').on('submit', '.partners-contact-form', backEnd.sendForm);
             $('body').on('click', '.product__variant', backEnd.showVariantCustom);
         },
-
-        /*showVariant: function() {
-            let variantID = $(this).val(),
-                productID = $(this).attr('data-product-id');
-
-            $('.add-to-cart').attr('variant-id', variantID);  
-
-            $('.add-to-cart-'+productID).addClass('disable');
-
-            let formData = new FormData();
-                formData.append('action', 'sp_get_product_variable');
-                formData.append('variantID', variantID);
-                formData.append('productID', productID);
-
-            $.ajax({
-                url: spJs.ajaxUrl,
-                type: 'POST',
-                data: formData,
-                cache: false,
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                success: function (data) {  
-                    let regularPrice = parseFloat(data.regularPrice),
-                        salePrice = parseFloat(data.salePrice),
-                        symbol = data.symbol,
-                        productPrice = '';
-
-                    regularPrice = regularPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');  
-                    salePrice = salePrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& '); 
-                    
-                    regularPrice = regularPrice.replace('.00', '');
-                    salePrice = salePrice.replace('.00', '');
-
-                    if(salePrice != regularPrice){  
-                        
-                        productPrice += '<div class="catalog-price-wrap catalog-price-old">';
-                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
-                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
-                        productPrice += '</div>';    
-
-                        productPrice += '<div class="catalog-price-wrap catalog-price-new">';
-                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
-                            productPrice += '<span class="catalog__price">'+salePrice+'</span>';
-                        productPrice += '</div> ';
-
-                    } else {                       
-                        productPrice += '<div class="catalog-price-wrap catalog-price-regular">';
-                            productPrice += '<span class="catalog__currency">'+symbol+'&nbsp;</span>';
-                            productPrice += '<span class="catalog__price">'+regularPrice+'</span>';
-                        productPrice += '</div> ';
-                    }
-
-                    $('.price-ajax-result-'+productID).html(productPrice);
-                    $('.add-to-cart-'+productID).attr('variant-id', variantID);
-                    $('.add-to-cart-'+productID).removeClass('disable');
-                }
-            });
-        },*/
 
         showVariantCustom: function() {
 
@@ -445,7 +385,10 @@ jQuery(document).ready(($) => {
                 contentType: false,
                 success: function (data) {
                     $('.modal-ajax-result').html(data.result);
-                    frontEnd.select();
+                    
+                    if(dataModal != 'review'){
+                        frontEnd.select();
+                    }    
                 }
             });
         },
