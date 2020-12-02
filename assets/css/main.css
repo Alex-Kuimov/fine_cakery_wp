@@ -1859,6 +1859,11 @@ ul.payment_methods li::before {
     border-top: none!important;
 }
 
+.woocommerce-form__label-for-checkbox a{
+    text-decoration: underline;
+}
+
+
 
 /*
 * Custom Select
