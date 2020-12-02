@@ -831,7 +831,8 @@
         align-items: start;
     }
     .slider__title {
-        font-size: 36px;
+        text-align: center;
+        font-size: 30px;
         margin: 0px;
     }
     .slider__text {
