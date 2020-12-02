@@ -36,6 +36,8 @@ add_action('woocommerce_checkout_process', 'sp_not_approved_privacy');
 */
 
 
+/*
+
 function enabling_date_picker() {
     if( is_admin() || ! is_checkout() ) return;
 
@@ -89,6 +91,8 @@ function sp_checkout_field_update_order_meta($order_id) {
     }
 }
 add_action('woocommerce_checkout_update_order_meta', 'sp_checkout_field_update_order_meta');
+
+*/
 
 
 /*
