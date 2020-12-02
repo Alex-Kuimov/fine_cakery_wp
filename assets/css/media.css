@@ -148,7 +148,7 @@
         margin-right: 30px;
     }
     .slider__title {
-        font-size: 43px;
+        font-size: 32px;
     }
     .slider__text {
         font-size: 18px;
@@ -283,6 +283,9 @@
     }
     .slider .swiper-button-next {
         margin-left: 15px;
+    }
+    .slider .slider-wrap{
+        width: 1000px;
     }
     .favorite__item {
         width: 450px;
