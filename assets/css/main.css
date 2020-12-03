@@ -796,9 +796,15 @@
 */
 
 
+.reviews{
+    text-align: center;
+}
+
+
 .reviews-wrap {
     width: 100%;
     margin-top: 40px;
+    text-align: left;
 }
 
 .review-form-wrap{
@@ -815,7 +821,6 @@
 
 .review-form-btn-wrap{
     margin-top: 20px;
-    text-align: center;
 }
 
 .reviews__button,
