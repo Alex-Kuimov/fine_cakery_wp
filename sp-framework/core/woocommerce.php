@@ -137,9 +137,7 @@ function refresh_checkout_on_payment_methods_change(){
     ?>
     <script type="text/javascript">
         (function($){
-            console.log('ok1');
             $( 'form.checkout' ).on( 'change', '#billing_state', function() { 
-                console.log('ok2');
                 $('body').trigger('update_checkout');
             });
         })(jQuery);
