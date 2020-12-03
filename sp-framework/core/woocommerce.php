@@ -126,3 +126,24 @@ function apply_custom_price_to_cart_item($cart_object) {
     }  
 }
 add_action('woocommerce_before_calculate_totals', 'apply_custom_price_to_cart_item', 99);
+
+
+/*
+* Checkout
+*/
+
+
+function refresh_checkout_on_payment_methods_change(){
+    ?>
+    <script type="text/javascript">
+        (function($){
+            console.log('ok1');
+            $( 'form.checkout' ).on( 'change', '#billing_state', function() { 
+                console.log('ok2');
+                $('body').trigger('update_checkout');
+            });
+        })(jQuery);
+    </script>
+    <?php
+}
+add_action( 'woocommerce_review_order_before_payment', 'refresh_checkout_on_payment_methods_change' );
