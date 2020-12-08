@@ -123,7 +123,8 @@
 }
 
 @media screen and (max-width: 1366px) {
-    p {
+    p,
+    .reviews__item p  {
         font-size: 14px;
     }
     h1,
@@ -433,7 +434,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-    p {
+    p,
+    .reviews__item p {
         font-size: 14px;
     }
     .slider .slider-wrap {
