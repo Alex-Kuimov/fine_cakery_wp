@@ -120,6 +120,8 @@ function apply_custom_price_to_cart_item($cart_object) {
 
             $productID = $value['custom_ID'];
 
+            $productName = get_the_title($productID);
+
             if(isset($value['custom_price'])){
                 //if($value['data']->get_id() == $productID){
                     $value['data']->set_price($value['custom_price']);
@@ -128,13 +130,15 @@ function apply_custom_price_to_cart_item($cart_object) {
 
             if(isset($value['additional_product_name'])){
                 //if($value['data']->get_id() == $productID){
-                    $value['data']->set_name(get_the_title($productID).' - '.$value['additional_product_name']);
+                    $productName .= ' - '.$value['additional_product_name'];
+                    $value['data']->set_name($productName);
                 //}   
             }
 
             if(isset($value['custom_product_name'])){
                 //if($value['data']->get_id() == $productID){
-                    $value['data']->set_name(get_the_title($productID).' - '.$value['custom_product_name']);
+                    $productName .= ' - '.$value['custom_product_name'];
+                    $value['data']->set_name($productName);
                 //}   
             }
             
