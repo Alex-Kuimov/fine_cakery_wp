@@ -1880,7 +1880,7 @@ ul.payment_methods li::before {
 
 .select {
     display: block;
-    max-width: 215px;
+    max-width: 290px;
     width: 100%;
     position: relative;
 }
