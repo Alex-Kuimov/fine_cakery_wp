@@ -100,7 +100,7 @@ add_action('woocommerce_checkout_update_order_meta', 'sp_checkout_field_update_o
 */
 
 
-function cart_product_title( $title, $values, $cart_item_key ) {
+/*function cart_product_title( $title, $values, $cart_item_key ) {
     if(isset($values['custom_product_name']) && !empty($values['custom_product_name'])){
         $title = $title.' ('.$values['custom_product_name'].')';
     } 
@@ -111,15 +111,27 @@ function cart_product_title( $title, $values, $cart_item_key ) {
 
     return $title;
 }
-add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);
+add_filter( 'woocommerce_cart_item_name', 'cart_product_title', 20, 3);*/
 
 
 function apply_custom_price_to_cart_item($cart_object) { 
     if( !WC()->session->__isset('reload_checkout')) {
         foreach ( $cart_object->cart_contents as $key => $value ) {
-            if( isset( $value['custom_price'] ) ) {
+            if(isset( $value['custom_price'])){
                 if($value['data']->id == $value['custom_ID']){
                     $value['data']->set_price($value['custom_price']);
+                }   
+            }
+
+            if(isset($value['additional_product_name'])){
+                if($value['data']->id == $value['custom_ID']){
+                    $value['data']->set_name(get_the_title($value['data']->id).' - '.$value['additional_product_name']);
+                }   
+            }
+
+            if(isset($value['custom_product_name'])){
+                if($value['data']->id == $value['custom_ID']){
+                    $value['data']->set_name(get_the_title($value['data']->id).' - '.$value['custom_product_name']);
                 }   
             }
         }  

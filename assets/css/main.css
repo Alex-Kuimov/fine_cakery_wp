@@ -1868,6 +1868,9 @@ ul.payment_methods li::before {
     text-decoration: underline;
 }
 
+.variation p{
+    font-size: 14px;
+}
 
 
 /*
